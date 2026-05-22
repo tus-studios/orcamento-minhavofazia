@@ -36,7 +36,7 @@
   .card-subtitle { font-size:12px; color:var(--text-light); margin-top:2px; }
   .section-label { font-size:10px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--caramel); margin-bottom:8px; }
 
-  /* PHOTO COUNTER (novo) */
+  /* PHOTO COUNTER */
   .photo-counter { display:flex; align-items:center; justify-content:space-between; padding:18px 20px; background:var(--cream); border:2px solid #E0CBB7; border-radius:12px; margin-bottom:16px; flex-wrap:wrap; gap:14px; }
   .photo-counter.has-qty { border-color:var(--caramel); background:#FFF7EA; }
   .photo-counter-left { flex:1; min-width:180px; }
@@ -49,10 +49,10 @@
   .qinput:focus { border-color:var(--caramel); }
   .qinput::-webkit-outer-spin-button, .qinput::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
   .qinput { -moz-appearance:textfield; }
-
   .subtotal-bar { display:flex; justify-content:space-between; align-items:center; padding:13px 16px; background:var(--brown-dark); border-radius:10px; color:var(--cream); font-size:14px; font-weight:500; }
   .subtotal-val { font-family:'Playfair Display',serif; font-size:19px; color:var(--gold); }
 
+  /* VÍDEOS */
   .video-type-row { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
   .video-type-card { flex:1; min-width:180px; padding:16px; border:2px solid #E0CBB7; border-radius:12px; cursor:default; transition:all 0.2s; background:var(--cream); }
   .video-type-card.has-qty { border-color:var(--caramel); background:#FFF7EA; }
@@ -67,9 +67,9 @@
   .vtc-sub { font-size:12px; color:var(--text-light); margin-left:4px; }
   .video-footer { display:flex; justify-content:space-between; align-items:center; padding:13px 16px; background:var(--brown-dark); border-radius:10px; color:var(--cream); font-size:14px; font-weight:500; margin-top:4px; }
   .video-footer-val { font-family:'Playfair Display',serif; font-size:19px; color:var(--gold); }
-  .disc-tag { font-size:11px; color:#6FCF97; margin-left:6px; }
 
-  .design-options { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
+  /* DESIGN OPTIONS (radio) */
+  .design-options { display:flex; flex-direction:column; gap:10px; margin-bottom:12px; }
   .design-option { display:flex; align-items:flex-start; gap:14px; padding:16px; border:2px solid #E0CBB7; border-radius:12px; cursor:pointer; transition:all 0.2s; }
   .design-option:hover { border-color:var(--caramel); }
   .design-option.selected { border-color:var(--caramel); background:#FFF7EA; }
@@ -82,12 +82,11 @@
   .design-option-desc { font-size:12px; color:var(--text-light); line-height:1.6; }
   .design-option-price { font-size:15px; font-weight:700; color:var(--brown-warm); white-space:nowrap; margin-left:8px; }
   .design-option-bonus { display:inline-block; margin-top:6px; padding:3px 8px; background:var(--gold); color:var(--brown-dark); font-size:10px; font-weight:700; border-radius:4px; letter-spacing:0.5px; text-transform:uppercase; }
-
-  /* CLEAR BUTTON (radio único) */
-  .clear-option-btn { background:none; border:none; color:var(--text-light); font-size:12px; cursor:pointer; text-decoration:underline; padding:4px 0; margin-top:4px; transition:color 0.2s; }
+  .clear-option-btn { background:none; border:none; color:var(--text-light); font-size:12px; cursor:pointer; text-decoration:underline; padding:4px 0; margin-top:4px; transition:color 0.2s; display:block; }
   .clear-option-btn:hover { color:var(--brown-warm); }
 
-  .hl-toggle { display:flex; align-items:center; justify-content:space-between; padding:16px; border:2px solid #E0CBB7; border-radius:12px; cursor:pointer; transition:all 0.2s; background:var(--cream); }
+  /* TOGGLE (checkbox) */
+  .hl-toggle { display:flex; align-items:center; justify-content:space-between; padding:16px; border:2px solid #E0CBB7; border-radius:12px; cursor:pointer; transition:all 0.2s; background:var(--cream); margin-bottom:8px; }
   .hl-toggle:hover { border-color:var(--caramel); }
   .hl-toggle.selected { border-color:var(--caramel); background:#FFF7EA; }
   .hl-toggle.included { border-color:var(--gold); background:#FFFBF0; cursor:default; }
@@ -98,33 +97,70 @@
   .item-price { font-size:14px; font-weight:600; color:var(--brown-warm); white-space:nowrap; }
   .included-badge { font-size:11px; font-weight:700; color:var(--green); letter-spacing:1px; text-transform:uppercase; }
 
+  .notes-box { background:#FFF7EA; border-left:3px solid var(--caramel); border-radius:0 10px 10px 0; padding:14px 16px; margin-top:16px; font-size:13px; color:var(--text-light); line-height:1.7; }
+  .notes-box strong { color:var(--brown-dark); }
+
+  /* PLANOS MENSAIS */
   .monthly-intro { background:var(--brown-dark); border-radius:16px; padding:22px 24px; margin-bottom:16px; position:relative; overflow:hidden; }
   .monthly-intro::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 100% 0%, #C47F2B20 0%, transparent 60%); }
   .monthly-intro-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; position:relative; }
   .monthly-intro-title { font-family:'Playfair Display',serif; font-size:20px; color:var(--cream); margin-bottom:6px; position:relative; }
   .monthly-intro-desc { font-size:13px; color:#BFA082; line-height:1.7; position:relative; }
 
-  .content-items { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
-  .content-item { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; background:var(--cream); border:1px solid #E0CBB7; border-radius:10px; }
-  .content-item-left { display:flex; align-items:center; gap:10px; }
-  .qty-controls { display:flex; align-items:center; gap:8px; }
+  .plan-grid { display:flex; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+  .plan-card { flex:1; min-width:240px; border:2px solid #E0CBB7; border-radius:14px; padding:20px; cursor:pointer; transition:all 0.2s; background:var(--cream); position:relative; }
+  .plan-card:hover { border-color:var(--caramel); }
+  .plan-card.selected { border-color:var(--caramel); background:#FFF7EA; }
+  .plan-card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; }
+  .plan-radio { width:20px; height:20px; border:2px solid #C9AC80; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+  .plan-radio::after { content:''; width:10px; height:10px; border-radius:50%; background:var(--caramel); opacity:0; transition:opacity 0.2s; }
+  .plan-card.selected .plan-radio { border-color:var(--caramel); }
+  .plan-card.selected .plan-radio::after { opacity:1; }
+  .plan-name { font-family:'Playfair Display',serif; font-size:16px; color:var(--brown-dark); margin-bottom:4px; }
+  .plan-tagline { font-size:12px; color:var(--text-light); line-height:1.5; margin-bottom:12px; }
+  .plan-includes-title { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--caramel); margin-bottom:8px; }
+  .plan-includes { list-style:none; display:flex; flex-direction:column; gap:5px; margin-bottom:14px; }
+  .plan-includes li { font-size:12px; color:var(--text-light); line-height:1.5; padding-left:14px; position:relative; }
+  .plan-includes li::before { content:'·'; position:absolute; left:0; color:var(--caramel); font-weight:700; }
+  .plan-note { font-size:11px; color:#9A7040; font-style:italic; line-height:1.5; margin-bottom:14px; }
+  .plan-price { font-family:'Playfair Display',serif; font-size:22px; color:var(--brown-warm); }
+  .plan-price span { font-size:13px; font-family:'DM Sans',sans-serif; font-weight:400; color:var(--text-light); }
 
+  /* ADD-ON GESTÃO */
+  .addon-card { border:1.5px dashed #C9AC80; border-radius:12px; padding:16px; margin-bottom:16px; background:var(--cream); }
+  .addon-card.selected { border-color:var(--caramel); background:#FFF7EA; border-style:solid; }
+  .addon-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px; }
+  .addon-header-left { display:flex; align-items:flex-start; gap:12px; flex:1; }
+  .addon-tag { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--caramel); margin-bottom:4px; }
+  .addon-name { font-size:14px; font-weight:600; color:var(--text); }
+  .addon-price { font-size:15px; font-weight:700; color:var(--brown-warm); white-space:nowrap; }
+  .addon-includes { list-style:none; display:flex; flex-direction:column; gap:4px; }
+  .addon-includes li { font-size:12px; color:var(--text-light); padding-left:14px; position:relative; }
+  .addon-includes li::before { content:'·'; position:absolute; left:0; color:var(--caramel); font-weight:700; }
+
+  /* SELETOR DE DURAÇÃO */
+  .duration-picker { background:var(--cream); border:1.5px solid #E0CBB7; border-radius:12px; padding:16px 18px; margin-bottom:16px; }
+  .duration-label { font-size:13px; font-weight:600; color:var(--text); margin-bottom:6px; }
+  .duration-hint { font-size:12px; color:var(--text-light); margin-bottom:12px; line-height:1.5; }
+  .duration-options { display:flex; gap:8px; flex-wrap:wrap; }
+  .duration-opt { flex:1; min-width:70px; padding:12px 8px; border:1.5px solid #DFC9A0; border-radius:8px; background:var(--white); font-size:14px; font-weight:600; color:var(--brown-mid); cursor:pointer; transition:all 0.2s; text-align:center; font-family:'DM Sans',sans-serif; }
+  .duration-opt:hover { border-color:var(--caramel); }
+  .duration-opt.active { border-color:var(--caramel); background:var(--caramel); color:var(--white); }
+  .duration-opt-sub { display:block; font-size:10px; font-weight:400; opacity:0.8; margin-top:2px; text-transform:uppercase; letter-spacing:0.5px; }
+  .custom-months-wrap { display:none; margin-top:10px; align-items:center; gap:10px; }
+  .custom-months-wrap.visible { display:flex; }
+  .custom-months-wrap label { font-size:13px; color:var(--text-light); }
+  .custom-months-input { width:70px; height:36px; border:1.5px solid #DFC9A0; border-radius:8px; font-size:16px; font-weight:700; color:var(--text); text-align:center; font-family:'DM Sans',sans-serif; outline:none; }
+  .custom-months-input:focus { border-color:var(--caramel); }
+
+  /* DISCOUNT NOTICE */
   .discount-notice { padding:14px 16px; border-radius:10px; font-size:13px; margin-bottom:16px; line-height:1.65; border:1.5px solid; }
   .discount-notice.locked { background:#FFF7EA; border-color:#DFC9A0; color:var(--text-light); }
   .discount-notice.almost { background:#FFF3E0; border-color:#F0A500; color:#7A4F00; }
   .discount-notice.unlocked { background:#F0FFF6; border-color:#6FCF97; color:#1A5C35; }
 
+  /* FOOTER MENSAL */
   .monthly-footer { background:var(--brown-dark); border-radius:12px; padding:18px 20px; }
-
-  /* Seletor de duração */
-  .duration-picker { background:var(--cream); border:1.5px solid #E0CBB7; border-radius:12px; padding:16px 18px; margin-bottom:16px; }
-  .duration-label { font-size:13px; font-weight:600; color:var(--text); margin-bottom:10px; }
-  .duration-hint { font-size:12px; color:var(--text-light); margin-bottom:12px; line-height:1.5; }
-  .duration-options { display:flex; gap:8px; flex-wrap:wrap; }
-  .duration-opt { flex:1; min-width:80px; padding:12px 8px; border:1.5px solid #DFC9A0; border-radius:8px; background:var(--white); font-size:14px; font-weight:600; color:var(--brown-mid); cursor:pointer; transition:all 0.2s; text-align:center; font-family:'DM Sans',sans-serif; }
-  .duration-opt:hover { border-color:var(--caramel); }
-  .duration-opt.active { border-color:var(--caramel); background:var(--caramel); color:var(--white); }
-  .duration-opt-sub { display:block; font-size:10px; font-weight:400; opacity:0.8; margin-top:2px; text-transform:uppercase; letter-spacing:0.5px; }
   .mf-row { display:flex; justify-content:space-between; font-size:13px; color:#BFA082; padding:3px 0; }
   .mf-row.hl { color:var(--cream); font-weight:500; }
   .mf-row.disc { color:#6FCF97; }
@@ -134,20 +170,18 @@
   .mf-total-val { font-family:'Playfair Display',serif; font-size:26px; color:var(--gold); }
   .mf-note { font-size:11px; color:#7A5A40; margin-top:4px; }
 
-  .notes-box { background:#FFF7EA; border-left:3px solid var(--caramel); border-radius:0 10px 10px 0; padding:14px 16px; margin-top:16px; font-size:13px; color:var(--text-light); line-height:1.7; }
-  .notes-box strong { color:var(--brown-dark); }
-
+  /* BÔNUS */
   .bonus-card { border-radius:16px; padding:24px; margin-bottom:16px; border:2px dashed var(--gold); background:#FFFBF0; position:relative; overflow:hidden; }
   .bonus-card::before { content:'🎁'; position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:52px; opacity:0.1; }
   .bonus-card-title { font-family:'Playfair Display',serif; font-size:18px; color:var(--brown-dark); margin-bottom:6px; }
   .bonus-card-sub { font-size:13px; color:var(--text-light); margin-bottom:16px; line-height:1.6; }
   .bonus-tiers { display:flex; flex-direction:column; gap:10px; }
-  .bonus-tier { display:flex; align-items:flex-start; gap:12px; padding:14px; background:var(--white); border-radius:10px; border:1px solid #E8D5B7; opacity:0.4; transition:all 0.3s; }
+  .bonus-tier { display:flex; align-items:flex-start; gap:12px; padding:14px; background:var(--white); border-radius:10px; border:1px solid #E8D5B7; opacity:0.35; transition:all 0.3s; }
   .bonus-tier.unlocked { opacity:1; border-color:var(--gold); }
   .bonus-tier-icon { font-size:20px; flex-shrink:0; }
   .bonus-tier-body { flex:1; }
   .bonus-tier-name { font-size:13px; font-weight:600; color:var(--text); }
-  .bonus-tier-desc { font-size:12px; color:var(--text-light); margin-top:2px; }
+  .bonus-tier-desc { font-size:12px; color:var(--text-light); margin-top:3px; line-height:1.6; }
   .bonus-tier-val { text-align:right; white-space:nowrap; }
   .bonus-tier-val .orig { text-decoration:line-through; color:#B09070; font-size:11px; display:block; }
   .bonus-tier-val .free { color:var(--green); font-weight:700; font-size:13px; }
@@ -165,7 +199,7 @@
   .gt-final-val { font-family:'Playfair Display',serif; font-size:36px; color:var(--gold); line-height:1; }
   .gt-note { font-size:11px; color:#7A5A40; margin-top:4px; text-align:right; }
 
-  /* PAYMENT SCHEDULE */
+  /* CRONOGRAMA */
   .schedule-card { background:var(--white); border:1px solid #E8D5B7; border-radius:16px; overflow:hidden; margin-top:16px; }
   .schedule-header { background:var(--brown-dark); padding:18px 24px; }
   .schedule-header-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
@@ -191,6 +225,7 @@
     .container { padding:24px 16px 60px; }
     .gt-final-val { font-size:28px; }
     .video-type-row { flex-direction:column; }
+    .plan-grid { flex-direction:column; }
     .schedule-table td, .schedule-table th { padding:10px 12px; }
   }
 </style>
@@ -207,7 +242,7 @@
 
 <div class="container">
 
-  <!-- BLOCO 1 -->
+  <!-- BLOCO 1: PROJETO BASE -->
   <div class="block-label">
     <div class="block-num">1</div>
     <div class="block-title">Projeto Base</div>
@@ -238,7 +273,7 @@
     </div>
     <div class="hl-toggle" id="stratToggle" onclick="toggleStrat()">
       <div class="hl-toggle-left">
-        <div class="checkbox" id="stratCheck">✓</div>
+        <div class="checkbox" id="stratCheck"></div>
         <div>
           <div class="item-name">Auditoria + Repaginação Estratégica</div>
           <div class="item-desc">Análise da marca atual, definição de posicionamento, território e direção visual</div>
@@ -260,6 +295,17 @@
     </div>
     <div class="design-options" id="menuOptions"></div>
     <button class="clear-option-btn" id="menuClear" onclick="clearMenu()" style="display:none;">✕ Remover seleção de cardápio</button>
+    <!-- ADD-ON: CARDÁPIO EDITÁVEL -->
+    <div class="hl-toggle" id="menuEditToggle" onclick="toggleMenuEdit()" style="margin-top:12px;">
+      <div class="hl-toggle-left">
+        <div class="checkbox" id="menuEditCheck"></div>
+        <div>
+          <div class="item-name">Adicional: Cardápio editável no Canva</div>
+          <div class="item-desc">Receba o arquivo editável no Canva para atualizar preços e produtos por conta própria</div>
+        </div>
+      </div>
+      <div class="item-price">R$ 50</div>
+    </div>
     <div class="notes-box"><strong>Incluso em ambos os planos:</strong> até 2 rodadas de ajuste, PDF para impressão e versão digital (PNG/JPG).</div>
   </div>
 
@@ -307,7 +353,7 @@
     </div>
   </div>
 
-  <!-- DESTAQUES -->
+  <!-- CAPAS DESTAQUES -->
   <div class="card">
     <div class="card-header">
       <div class="card-icon">✨</div>
@@ -318,7 +364,7 @@
     </div>
     <div class="hl-toggle" id="hlToggle" onclick="toggleHL()">
       <div class="hl-toggle-left">
-        <div class="checkbox" id="hlCheck">✓</div>
+        <div class="checkbox" id="hlCheck"></div>
         <div>
           <div class="item-name" id="hlName">Capas para Destaques</div>
           <div class="item-desc" id="hlDesc">Capas alinhadas à nova identidade visual da marca</div>
@@ -328,18 +374,18 @@
     </div>
   </div>
 
-  <!-- BLOCO 2 -->
+  <!-- BLOCO 2: PRODUÇÃO MENSAL -->
   <div class="block-label" style="margin-top:24px;">
     <div class="block-num">2</div>
-    <div class="block-title">Prestação Mensal <span style="font-size:13px;font-weight:400;color:var(--text-light);font-family:'DM Sans',sans-serif;">— monte como quiser</span></div>
+    <div class="block-title">Produção Mensal <span style="font-size:13px;font-weight:400;color:var(--text-light);font-family:'DM Sans',sans-serif;">— monte como quiser</span></div>
   </div>
 
   <div class="monthly-intro">
     <div class="monthly-intro-label">Conteúdo contínuo</div>
-    <div class="monthly-intro-title">Posts, Carrosseis e Vídeos mensais</div>
+    <div class="monthly-intro-title">Escolha o plano e a duração</div>
     <div class="monthly-intro-desc">
-      Escolha a duração e monte a composição que faz sentido pra você.
-      <strong style="color:var(--gold);">10% de desconto</strong> ao fechar 3 meses com pelo menos 2 posts + 2 carrosseis + 4 vídeos por mês.
+      Você contrata nossa capacidade criativa — a composição de formatos é definida estrategicamente a cada mês.
+      <strong style="color:var(--gold);">10% de desconto</strong> ao fechar 3 meses ou mais.
     </div>
   </div>
 
@@ -347,35 +393,78 @@
     <div class="card-header">
       <div class="card-icon">📋</div>
       <div>
-        <div class="card-title">Monte seu pacote mensal</div>
-        <div class="card-subtitle">Foto + design + copy inclusos em posts e carrosseis</div>
+        <div class="card-title">Plano de Produção</div>
+        <div class="card-subtitle">Escolha o plano que melhor se encaixa no momento da sua marca</div>
       </div>
     </div>
 
-    <div class="duration-picker">
+    <div class="plan-grid" id="planGrid"></div>
+    <button class="clear-option-btn" id="planClear" onclick="clearPlan()" style="display:none;">✕ Remover seleção de plano</button>
+
+    <!-- ADD-ON: GESTÃO DE PUBLICAÇÃO -->
+    <div class="addon-card" id="addonCard" style="display:none;">
+      <div class="addon-header">
+        <div class="addon-header-left">
+          <div class="checkbox" id="addonCheck" style="margin-top:2px;"></div>
+          <div>
+            <div class="addon-tag">Add-on</div>
+            <div class="addon-name">Gestão de Publicação <span style="font-size:12px;font-weight:400;color:var(--text-light);">(copy de legenda e programação de upload)</span></div>
+          </div>
+        </div>
+        <div class="addon-price" id="addonPrice">—</div>
+      </div>
+      <ul class="addon-includes">
+        <li>Redação das legendas</li>
+        <li>Adaptação da comunicação para o Instagram</li>
+        <li>Organização do calendário editorial</li>
+        <li>Programação das postagens</li>
+        <li>Alinhamento e aprovação prévia dos conteúdos</li>
+      </ul>
+    </div>
+    <div id="addonToggleWrap" style="display:none;">
+      <div class="hl-toggle" id="addonToggle" onclick="toggleAddon()">
+        <div class="hl-toggle-left">
+          <div class="checkbox" id="addonCheckbox"></div>
+          <div>
+            <div class="item-name">Adicionar Gestão de Publicação</div>
+            <div class="item-desc" id="addonDesc">Selecione um plano para ver o valor</div>
+          </div>
+        </div>
+        <div class="item-price" id="addonPriceToggle">—</div>
+      </div>
+    </div>
+
+    <!-- SELETOR DE DURAÇÃO -->
+    <div class="duration-picker" style="margin-top:16px;">
       <div class="duration-label">Por quantos meses?</div>
-      <div class="duration-hint">A composição definida abaixo se repete em cada mês contratado.</div>
+      <div class="duration-hint">O plano escolhido se repete em cada mês contratado.</div>
       <div class="duration-options" id="durationOptions">
         <button class="duration-opt" data-months="1" onclick="setDuration(1)">1 mês</button>
         <button class="duration-opt" data-months="2" onclick="setDuration(2)">2 meses</button>
-        <button class="duration-opt" data-months="3" onclick="setDuration(3)">3 meses <span class="duration-opt-sub">elegível pro desconto</span></button>
+        <button class="duration-opt" data-months="3" onclick="setDuration(3)">3 meses<span class="duration-opt-sub">desconto 10%</span></button>
+        <button class="duration-opt" data-months="99" onclick="setDuration(99)">3+<span class="duration-opt-sub">desconto 10%</span></button>
+      </div>
+      <div class="custom-months-wrap" id="customMonthsWrap">
+        <label>Quantos meses?</label>
+        <input type="number" class="custom-months-input" id="customMonthsInput" value="4" min="4" max="24" oninput="setCustomMonths(this.value)">
       </div>
     </div>
 
-    <div class="content-items" id="contentItems"></div>
     <div class="discount-notice locked" id="discNotice">
-      <strong>🔒 Desconto de 10% disponível</strong> ao fechar 3 meses com pelo menos 2 posts, 2 carrosseis e 4 vídeos por mês.<br>
-      <span style="font-size:12px;">Tem uma necessidade diferente? O pacote é <strong>flexível</strong> — desconto <strong>negociável</strong> conforme sua demanda.</span>
+      <strong>🔒 Desconto de 10%</strong> ao fechar 3 meses ou mais.<br>
+      <span style="font-size:12px;">Escolha um plano e a duração acima para calcular.</span>
     </div>
+
     <div class="monthly-footer">
-      <div class="mf-row"><span>Valor cheio mensal</span><span id="mfGross">—</span></div>
-      <div class="mf-row disc" id="mfDiscRow" style="display:none;"><span>Desconto 10%</span><span id="mfDisc">—</span></div>
+      <div class="mf-row"><span>Plano mensal (bruto)</span><span id="mfGross">—</span></div>
+      <div class="mf-row" id="mfAddonRow" style="display:none;"><span>↳ Gestão de Publicação</span><span id="mfAddon">—</span></div>
+      <div class="mf-row disc" id="mfDiscRow" style="display:none;"><span>↳ Desconto 10%</span><span id="mfDisc">—</span></div>
       <div class="mf-divider"></div>
-      <div class="mf-row hl"><span>Valor mensal</span><span id="mfMonthly">—</span></div>
+      <div class="mf-row hl"><span>Valor mensal líquido</span><span id="mfMonthly">—</span></div>
       <div class="mf-total">
         <div>
           <div class="mf-total-label" id="mfTotalLabel">Total</div>
-          <div class="mf-note" id="mfNote">Selecione os itens acima</div>
+          <div class="mf-note" id="mfNote">Selecione o plano e a duração</div>
         </div>
         <div class="mf-total-val" id="mfTotal">R$ —</div>
       </div>
@@ -393,48 +482,53 @@
 
   <div class="bonus-card">
     <div class="bonus-card-title">Conteúdo extra, sem custo adicional</div>
-    <div class="bonus-card-sub">Quanto mais você fechar, mais você ganha. Os bônus desbloqueiam conforme os itens selecionados.</div>
+    <div class="bonus-card-sub">Quanto mais você fechar, mais você ganha. Os bônus desbloqueiam conforme os itens selecionados. Requer Identidade Visual Completa.</div>
     <div class="bonus-tiers">
+
       <div class="bonus-tier" id="bonus1">
         <div class="bonus-tier-icon">🎁</div>
         <div class="bonus-tier-body">
-          <div class="bonus-tier-name">Ao fechar Projeto Base (identidade + cardápio + fotos)</div>
-          <div class="bonus-tier-desc">1 carrossel · foto + design + copy inclusos</div>
+          <div class="bonus-tier-name">ID Completa + Cardápio + Fotos</div>
+          <div class="bonus-tier-desc">Ganha: 1 carrossel (foto + design + copy) · Capas para Destaques incluídas</div>
         </div>
         <div class="bonus-tier-val"><span class="orig">R$ 150</span><span class="free">GRÁTIS</span></div>
       </div>
+
       <div class="bonus-tier" id="bonus2">
         <div class="bonus-tier-icon">🎁🎁</div>
         <div class="bonus-tier-body">
-          <div class="bonus-tier-name">Ao fechar Projeto Base + Estratégia de Marca</div>
-          <div class="bonus-tier-desc">1 carrossel + 1 post simples · foto + design + copy inclusos</div>
+          <div class="bonus-tier-name">ID Completa + Cardápio + Fotos + Estratégia de Marca</div>
+          <div class="bonus-tier-desc">Ganha: 1 post + 1 carrossel (foto + design + copy) · Capas para Destaques incluídas</div>
         </div>
         <div class="bonus-tier-val"><span class="orig">R$ 210</span><span class="free">GRÁTIS</span></div>
       </div>
+
       <div class="bonus-tier" id="bonus3">
         <div class="bonus-tier-icon">🎁🎁🎁</div>
         <div class="bonus-tier-body">
-          <div class="bonus-tier-name">Ao fechar Projeto Base + Prestação Mensal de 3 meses (2 posts · 2 carrosseis · 4 vídeos)</div>
-          <div class="bonus-tier-desc">10% off em todos os itens do pacote mensal + 10% off nas fotos do Projeto Base</div>
+          <div class="bonus-tier-name">ID Completa + Cardápio + Fotos + Estratégia + Produção Mensal (3+ meses)</div>
+          <div class="bonus-tier-desc">Ganha: 1 mês de Gestão de Publicação grátis (copy de legenda e programação de upload) · 1 post + 1 carrossel · Capas para Destaques incluídas</div>
         </div>
-        <div class="bonus-tier-val"><span class="orig" id="bonus3orig">—</span><span class="free">10% OFF</span></div>
+        <div class="bonus-tier-val"><span class="orig" id="bonus3orig">—</span><span class="free">GRÁTIS</span></div>
       </div>
+
     </div>
   </div>
 
   <!-- TOTAL GERAL -->
   <div class="grand-total-card">
     <div class="gt-rows">
-      <div class="gt-row"><span>Fotografia</span><span id="gtFoto">—</span></div>
-      <div class="gt-row disc" id="gtFotoDiscRow" style="display:none;"><span>↳ Desconto 10% fotos</span><span id="gtFotoDisc">—</span></div>
-      <div class="gt-row"><span>Vídeos (Projeto Base)</span><span id="gtVideo">—</span></div>
       <div class="gt-row"><span>Identidade Visual</span><span id="gtBrand">—</span></div>
       <div class="gt-row"><span>Estratégia de Marca</span><span id="gtStrat">—</span></div>
       <div class="gt-row"><span>Design do Cardápio</span><span id="gtMenu">—</span></div>
+      <div class="gt-row" id="gtMenuEditRow" style="display:none;"><span>↳ Cardápio editável Canva</span><span id="gtMenuEdit">—</span></div>
+      <div class="gt-row"><span>Fotografia</span><span id="gtFoto">—</span></div>
+      <div class="gt-row"><span>Vídeos (Projeto Base)</span><span id="gtVideo">—</span></div>
       <div class="gt-row"><span>Capas para Destaques</span><span id="gtHL">—</span></div>
       <div class="gt-divider"></div>
-      <div class="gt-row"><span id="gtMonthlyLabel">Prestação Mensal</span><span id="gtMonthly">—</span></div>
-      <div class="gt-row disc" id="gtMonthlyDiscRow" style="display:none;"><span>↳ Desconto 10% mensal</span><span id="gtMonthlyDisc">—</span></div>
+      <div class="gt-row"><span id="gtMonthlyLabel">Produção Mensal</span><span id="gtMonthly">—</span></div>
+      <div class="gt-row" id="gtAddonRow" style="display:none;"><span>↳ Gestão de Publicação</span><span id="gtAddon">—</span></div>
+      <div class="gt-row disc" id="gtMonthlyDiscRow" style="display:none;"><span>↳ Desconto 10%</span><span id="gtMonthlyDisc">—</span></div>
     </div>
     <div class="gt-bonus" id="gtBonus" style="display:none;">
       <span id="gtBonusText">🎁 Bônus incluído</span>
@@ -449,8 +543,8 @@
     </div>
   </div>
 
-  <!-- CRONOGRAMA DE PAGAMENTOS -->
-  <div class="schedule-card" id="scheduleCard">
+  <!-- CRONOGRAMA -->
+  <div class="schedule-card">
     <div class="schedule-header">
       <div class="schedule-header-label">Resumo financeiro</div>
       <div class="schedule-header-title">Quanto pagar por mês</div>
@@ -464,59 +558,110 @@
 <footer>Orçamento válido por 15 dias · Sujeito a ajustes após briefing detalhado</footer>
 
 <script>
-const PRICE_PHOTO = 50;
-const PRICE_HL = 100;
-const PRICE_STRAT = 700;
-const DISC_RATE = 0.10;
-const MIN_POST = 2, MIN_CARR = 2, MIN_VID = 4;
+// ─── CONSTANTES ───────────────────────────────────────────────────────────────
+const PRICE_PHOTO    = 50;
+const PRICE_HL       = 100;
+const PRICE_STRAT    = 700;
+const PRICE_MENU_EDIT = 50;
+const DISC_RATE      = 0.10;
 
 const brandPlans = [
-  { id:'basica',   name:'Identidade Visual Básica',   desc:'Logo principal, símbolo, paleta de cores e tipografia. O essencial para uma marca consistente.', price:500 },
-  { id:'completa', name:'Identidade Visual Completa', desc:'Tudo da básica + logos secundárias, ícones, mockups, elementos gráficos e manual de marca.', price:800, bonusHL:true },
+  { id:'basica',   name:'Identidade Visual Básica',
+    desc:'Logo principal, símbolo, paleta de cores e tipografia. O essencial para uma marca consistente.',
+    price:500, bonus:false },
+  { id:'completa', name:'Identidade Visual Completa',
+    desc:'Tudo da básica + logos secundárias, ícones, mockups, elementos gráficos e manual de marca.',
+    price:800, bonus:true, bonusHL:true },
 ];
+
 const menuPlans = [
-  { id:'simples',  name:'Cardápio Simples',  desc:'Cardápio digital de página única, com organização clara dos produtos e valores. Perfeito para uso no WhatsApp e redes sociais.', price:180 },
-  { id:'completo', name:'Cardápio Completo', desc:'Cardápio digital com capa e múltiplas páginas, incluindo descrição dos produtos. Pensado para valorizar a marca e melhorar a experiência do cliente.', price:350 },
+  { id:'simples',  name:'Cardápio Simples',
+    desc:'Cardápio digital de página única, com organização clara dos produtos e valores.',
+    price:180 },
+  { id:'completo', name:'Cardápio Completo',
+    desc:'Cardápio digital com capa e múltiplas páginas, incluindo descrição dos produtos.',
+    price:350 },
 ];
+
 const videoTypes = [
   { id:'vlongo', name:'Vídeo Completo', desc:'Até 1min · múltiplos produtos · com narração', price:250 },
 ];
-const monthlyDefs = [
-  { id:'post',      name:'Post Simples',   desc:'Foto + design + copy',                unitPrice:60,  min:MIN_POST },
-  { id:'carrossel', name:'Carrossel',       desc:'Até 6 slides · foto + design + copy', unitPrice:150, min:MIN_CARR },
-  { id:'mvlongo',   name:'Vídeo Completo', desc:'Até 1min · com narração',             unitPrice:250, min:MIN_VID },
+
+const monthlyPlans = [
+  {
+    id:'essencial',
+    name:'Plano Essencial',
+    tagline:'Ideal para marcas que desejam manter uma presença digital consistente com uma produção mais enxuta e estratégica.',
+    includes:[
+      'Planejamento mensal de conteúdo',
+      'Direção criativa aplicada à comunicação da marca',
+      'Meia diária de captação mensal',
+      'Edição e finalização dos materiais',
+      'Mínimo de 4 conteúdos mensais entre vídeos e posts',
+      'Acompanhamento da consistência visual e posicionamento',
+    ],
+    note:'Os formatos são definidos estrategicamente conforme as necessidades de comunicação de cada mês.',
+    price: 1500,
+    addonPrice: 300,
+  },
+  {
+    id:'estrategico',
+    name:'Plano Estratégico',
+    tagline:'Indicado para marcas que desejam fortalecer posicionamento, aumentar frequência e construir presença digital de forma mais consistente.',
+    includes:[
+      'Planejamento estratégico de conteúdo',
+      'Direção criativa contínua',
+      '1 diária de captação mensal',
+      'Edição e finalização dos materiais',
+      'Mínimo de 8 conteúdos mensais entre vídeos e posts',
+      'Acompanhamento da linguagem visual e posicionamento',
+      'Maior flexibilidade de formatos e desdobramentos',
+    ],
+    note:'Os formatos são definidos estrategicamente conforme os objetivos de comunicação de cada período.',
+    price: 2800,
+    addonPrice: 590,
+  },
 ];
 
-let photoQty = 0;
-let vQtys = { vlongo:0 };
-let selBrand = null;
-let selMenu = null;
-let stratSel = false;
-let hlSel = false;
-let mQtys = { post:0, carrossel:0, mvlongo:0 };
-let mDuration = 0; // 0 = nenhuma escolha; 1, 2 ou 3 meses
+// ─── ESTADO ───────────────────────────────────────────────────────────────────
+let photoQty    = 0;
+let vQtys       = { vlongo:0 };
+let selBrand    = null;
+let selMenu     = null;
+let menuEditSel = false;
+let stratSel    = false;
+let hlSel       = false;
+let selPlan     = null;   // 'essencial' | 'estrategico' | null
+let addonSel    = false;
+let mDuration   = 0;      // 0 = não escolhido; 1, 2, N = meses; 99 = custom
 
+// ─── UTILS ────────────────────────────────────────────────────────────────────
 function fmt(v){ return v.toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0}); }
-function R(v){ return v>0?'R$ '+fmt(v):'—'; }
+function R(v)  { return v>0 ? 'R$ '+fmt(v) : '—'; }
+function effectiveDuration(){
+  if(mDuration===99){
+    const v=parseInt(document.getElementById('customMonthsInput').value,10);
+    return (isNaN(v)||v<4) ? 4 : v;
+  }
+  return mDuration;
+}
 
-// PHOTO COUNTER
-function chgPhoto(delta){ setPhoto(photoQty+delta); }
+// ─── FOTO ─────────────────────────────────────────────────────────────────────
+function chgPhoto(d){ setPhoto(photoQty+d); }
 function setPhoto(v){
-  let n=parseInt(v,10); if(isNaN(n)||n<0) n=0; if(n>999) n=999;
+  let n=parseInt(v,10); if(isNaN(n)||n<0)n=0; if(n>999)n=999;
   photoQty=n;
   document.getElementById('photoInput').value=n;
   document.getElementById('photoCounter').classList.toggle('has-qty',n>0);
   update();
 }
 
-// VIDEOS
-const videoRow = document.getElementById('videoTypeRow');
+// ─── VÍDEOS ───────────────────────────────────────────────────────────────────
+const videoRow=document.getElementById('videoTypeRow');
 videoTypes.forEach(v=>{
   const el=document.createElement('div');
-  el.className='video-type-card';
-  el.id='vtc-'+v.id;
-  el.innerHTML=`
-    <div class="vtc-header"><div class="vtc-name">${v.name}</div><div class="vtc-price">R$ ${v.price}</div></div>
+  el.className='video-type-card'; el.id='vtc-'+v.id;
+  el.innerHTML=`<div class="vtc-header"><div class="vtc-name">${v.name}</div><div class="vtc-price">R$ ${v.price}</div></div>
     <div class="vtc-desc">${v.desc}</div>
     <div class="vtc-qty-row">
       <button class="qbtn-sm" onclick="chgV('${v.id}',-1)">−</button>
@@ -526,8 +671,8 @@ videoTypes.forEach(v=>{
     </div>`;
   videoRow.appendChild(el);
 });
-function chgV(id,delta){
-  vQtys[id]=Math.max(0,vQtys[id]+delta);
+function chgV(id,d){
+  vQtys[id]=Math.max(0,vQtys[id]+d);
   document.getElementById('vq-'+id).textContent=vQtys[id];
   const v=videoTypes.find(x=>x.id===id);
   document.getElementById('vs-'+id).textContent='R$ '+fmt(vQtys[id]*v.price);
@@ -535,18 +680,24 @@ function chgV(id,delta){
   update();
 }
 
-// BRAND
+// ─── IDENTIDADE VISUAL ────────────────────────────────────────────────────────
 const brandContainer=document.getElementById('brandOptions');
 brandPlans.forEach(d=>{
   const el=document.createElement('div');
-  el.className='design-option';
-  el.id='brand-'+d.id;
-  el.innerHTML=`<div class="radio"></div><div class="design-option-body"><div class="design-option-name">${d.name}</div><div class="design-option-desc">${d.desc}</div>${d.bonusHL?'<span class="design-option-bonus">🎁 Inclui Capas para Destaques grátis</span>':''}</div><div class="design-option-price">R$ ${d.price}</div>`;
+  el.className='design-option'; el.id='brand-'+d.id;
+  el.innerHTML=`<div class="radio"></div>
+    <div class="design-option-body">
+      <div class="design-option-name">${d.name}</div>
+      <div class="design-option-desc">${d.desc}</div>
+      ${d.bonusHL?'<span class="design-option-bonus">🎁 Inclui Capas para Destaques grátis</span>':''}
+      ${d.bonus?'<span class="design-option-bonus" style="background:var(--brown-dark);color:var(--gold);margin-left:4px;">✦ Elegível para bônus</span>':''}
+    </div>
+    <div class="design-option-price">R$ ${d.price}</div>`;
   el.addEventListener('click',()=>{
     selBrand=d.id;
     document.querySelectorAll('#brandOptions .design-option').forEach(x=>x.classList.remove('selected'));
     el.classList.add('selected');
-    document.getElementById('brandClear').style.display='inline-block';
+    document.getElementById('brandClear').style.display='block';
     update();
   });
   brandContainer.appendChild(el);
@@ -558,18 +709,34 @@ function clearBrand(){
   update();
 }
 
-// MENU
+// ─── ESTRATÉGIA ───────────────────────────────────────────────────────────────
+function toggleStrat(){
+  stratSel=!stratSel;
+  const tog=document.getElementById('stratToggle');
+  const c=document.getElementById('stratCheck');
+  tog.classList.toggle('selected',stratSel);
+  c.style.background=stratSel?'var(--caramel)':'transparent';
+  c.style.borderColor=stratSel?'var(--caramel)':'#C9AC80';
+  c.textContent=stratSel?'✓':'';
+  update();
+}
+
+// ─── CARDÁPIO ─────────────────────────────────────────────────────────────────
 const menuContainer=document.getElementById('menuOptions');
 menuPlans.forEach(d=>{
   const el=document.createElement('div');
-  el.className='design-option';
-  el.id='menu-'+d.id;
-  el.innerHTML=`<div class="radio"></div><div class="design-option-body"><div class="design-option-name">${d.name}</div><div class="design-option-desc">${d.desc}</div></div><div class="design-option-price">R$ ${d.price}</div>`;
+  el.className='design-option'; el.id='menu-'+d.id;
+  el.innerHTML=`<div class="radio"></div>
+    <div class="design-option-body">
+      <div class="design-option-name">${d.name}</div>
+      <div class="design-option-desc">${d.desc}</div>
+    </div>
+    <div class="design-option-price">R$ ${d.price}</div>`;
   el.addEventListener('click',()=>{
     selMenu=d.id;
     document.querySelectorAll('#menuOptions .design-option').forEach(x=>x.classList.remove('selected'));
     el.classList.add('selected');
-    document.getElementById('menuClear').style.display='inline-block';
+    document.getElementById('menuClear').style.display='block';
     update();
   });
   menuContainer.appendChild(el);
@@ -581,21 +748,22 @@ function clearMenu(){
   update();
 }
 
-// STRATEGY
-function toggleStrat(){
-  stratSel=!stratSel;
-  document.getElementById('stratToggle').classList.toggle('selected',stratSel);
-  const c=document.getElementById('stratCheck');
-  c.style.background=stratSel?'var(--caramel)':'transparent';
-  c.style.borderColor=stratSel?'var(--caramel)':'#C9AC80';
+// ADICIONAL EDITÁVEL
+function toggleMenuEdit(){
+  menuEditSel=!menuEditSel;
+  const tog=document.getElementById('menuEditToggle');
+  const c=document.getElementById('menuEditCheck');
+  tog.classList.toggle('selected',menuEditSel);
+  c.style.background=menuEditSel?'var(--caramel)':'transparent';
+  c.style.borderColor=menuEditSel?'var(--caramel)':'#C9AC80';
+  c.textContent=menuEditSel?'✓':'';
   update();
 }
 
-// HIGHLIGHTS
+// ─── DESTAQUES ────────────────────────────────────────────────────────────────
 function toggleHL(){
-  // Se identidade completa estiver selecionada, destaques estão inclusos — não toggle manual
   const brand=brandPlans.find(b=>b.id===selBrand);
-  if(brand && brand.bonusHL) return;
+  if(brand&&brand.bonusHL) return;
   hlSel=!hlSel;
   applyHLVisual();
   update();
@@ -603,13 +771,12 @@ function toggleHL(){
 function applyHLVisual(){
   const tog=document.getElementById('hlToggle');
   const brand=brandPlans.find(b=>b.id===selBrand);
-  const included=brand && brand.bonusHL;
+  const included=brand&&brand.bonusHL;
   const c=document.getElementById('hlCheck');
   tog.classList.remove('selected','included');
   if(included){
     tog.classList.add('included');
-    c.style.background='var(--green)';
-    c.style.borderColor='var(--green)';
+    c.style.background='var(--green)'; c.style.borderColor='var(--green)'; c.textContent='✓';
     document.getElementById('hlPrice').innerHTML='<span class="included-badge">✓ Incluso</span>';
     document.getElementById('hlDesc').textContent='Brinde da Identidade Visual Completa — capas alinhadas à sua nova marca';
   } else {
@@ -617,265 +784,303 @@ function applyHLVisual(){
     document.getElementById('hlDesc').textContent='Capas alinhadas à nova identidade visual da marca';
     if(hlSel){
       tog.classList.add('selected');
-      c.style.background='var(--caramel)';
-      c.style.borderColor='var(--caramel)';
+      c.style.background='var(--caramel)'; c.style.borderColor='var(--caramel)'; c.textContent='✓';
     } else {
-      c.style.background='transparent';
-      c.style.borderColor='#C9AC80';
+      c.style.background='transparent'; c.style.borderColor='#C9AC80'; c.textContent='';
     }
   }
 }
 
-// MONTHLY
-const contentContainer=document.getElementById('contentItems');
-monthlyDefs.forEach(item=>{
+// ─── PLANOS MENSAIS ───────────────────────────────────────────────────────────
+const planGrid=document.getElementById('planGrid');
+monthlyPlans.forEach(p=>{
   const el=document.createElement('div');
-  el.className='content-item';
+  el.className='plan-card'; el.id='plan-'+p.id;
   el.innerHTML=`
-    <div class="content-item-left">
-      <div class="qty-controls">
-        <button class="qbtn-sm" onclick="chgM('${item.id}',-1)">−</button>
-        <div class="qcount" id="mc-${item.id}">0</div>
-        <button class="qbtn-sm" onclick="chgM('${item.id}',1)">+</button>
-      </div>
-      <div>
-        <div class="item-name">${item.name}</div>
-        <div class="item-desc">${item.desc} · R$ ${item.unitPrice}/unid.</div>
-      </div>
+    <div class="plan-card-header">
+      <div><div class="plan-name">${p.name}</div></div>
+      <div class="plan-radio"></div>
     </div>
-    <div class="item-price" id="ms-${item.id}">R$ 0</div>`;
-  contentContainer.appendChild(el);
+    <div class="plan-tagline">${p.tagline}</div>
+    <div class="plan-includes-title">O que inclui</div>
+    <ul class="plan-includes">${p.includes.map(i=>`<li>${i}</li>`).join('')}</ul>
+    <div class="plan-note">${p.note}</div>
+    <div class="plan-price">R$ ${fmt(p.price)}<span>/mês</span></div>`;
+  el.addEventListener('click',()=>{
+    selPlan=p.id;
+    if(!addonSel) addonSel=false; // reset addon visual on plan change
+    document.querySelectorAll('.plan-card').forEach(x=>x.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('planClear').style.display='block';
+    document.getElementById('addonToggleWrap').style.display='block';
+    update();
+  });
+  planGrid.appendChild(el);
 });
-function chgM(id,delta){
-  mQtys[id]=Math.max(0,mQtys[id]+delta);
-  document.getElementById('mc-'+id).textContent=mQtys[id];
-  const item=monthlyDefs.find(i=>i.id===id);
-  document.getElementById('ms-'+id).textContent='R$ '+fmt(mQtys[id]*item.unitPrice);
+function clearPlan(){
+  selPlan=null; addonSel=false;
+  document.querySelectorAll('.plan-card').forEach(x=>x.classList.remove('selected'));
+  document.getElementById('planClear').style.display='none';
+  document.getElementById('addonToggleWrap').style.display='none';
+  const ac=document.getElementById('addonCheckbox');
+  ac.style.background='transparent'; ac.style.borderColor='#C9AC80'; ac.textContent='';
+  document.getElementById('addonToggle').classList.remove('selected');
   update();
 }
 
+// ADD-ON GESTÃO
+function toggleAddon(){
+  addonSel=!addonSel;
+  const tog=document.getElementById('addonToggle');
+  const c=document.getElementById('addonCheckbox');
+  tog.classList.toggle('selected',addonSel);
+  c.style.background=addonSel?'var(--caramel)':'transparent';
+  c.style.borderColor=addonSel?'var(--caramel)':'#C9AC80';
+  c.textContent=addonSel?'✓':'';
+  update();
+}
+
+// ─── DURAÇÃO ──────────────────────────────────────────────────────────────────
 function setDuration(n){
-  mDuration = (mDuration === n) ? 0 : n; // clicar de novo desmarca
+  mDuration=(mDuration===n&&n!==99)?0:n;
   document.querySelectorAll('.duration-opt').forEach(b=>{
-    b.classList.toggle('active', parseInt(b.dataset.months,10) === mDuration);
+    b.classList.toggle('active',parseInt(b.dataset.months,10)===mDuration);
   });
+  const wrap=document.getElementById('customMonthsWrap');
+  wrap.classList.toggle('visible', mDuration===99);
+  update();
+}
+function setCustomMonths(v){
+  let n=parseInt(v,10); if(isNaN(n)||n<4)n=4; if(n>24)n=24;
+  document.getElementById('customMonthsInput').value=n;
   update();
 }
 
-function buildSchedule(m0Total, m0Breakdown, photoDiscVal, mNet, mBreakdown, hasMonthly, discApplied, bonusText, bonusVal, duration) {
-  const body = document.getElementById('scheduleBody');
-  if(m0Total===0 && !hasMonthly){ body.innerHTML='<div class="schedule-empty">Selecione os itens acima para ver o cronograma de pagamentos.</div>'; return; }
-
-  let html = `<table class="schedule-table">
-    <thead><tr><th>Mês</th><th>O que inclui</th><th>Valor</th></tr></thead><tbody>`;
-
-  // MÊS 0
-  html += `<tr class="month-header"><td>Mês 0</td><td>Entrega do Projeto Base</td><td></td></tr>`;
-  m0Breakdown.forEach(row=>{
-    html += `<tr><td></td><td>${row.label}</td><td>${row.val}</td></tr>`;
-  });
-  if(discApplied && photoDiscVal > 0){
-    html += `<tr><td></td><td style="color:var(--green);">↳ Desconto 10% nas fotos</td><td style="color:var(--green);">− R$ ${fmt(photoDiscVal)}</td></tr>`;
-  }
-  if(bonusText){
-    html += `<tr class="bonus-row"><td></td><td>🎁 ${bonusText}</td><td>R$ ${fmt(bonusVal)} grátis</td></tr>`;
-  }
-  if(m0Total > 0){
-    html += `<tr class="total-row"><td></td><td>Total Mês 0</td><td>R$ ${fmt(m0Total - (discApplied?photoDiscVal:0))}</td></tr>`;
-  }
-
-  // MESES de prestação mensal (1 até duration)
-  if(hasMonthly && duration > 0){
-    for(let n=1; n<=duration; n++){
-      html += `<tr class="month-header"><td>Mês ${n}</td><td>Prestação Mensal</td><td></td></tr>`;
-      mBreakdown.forEach(row=>{
-        html += `<tr><td></td><td>${row.label}</td><td>${row.val}</td></tr>`;
-      });
-      if(discApplied){
-        html += `<tr><td></td><td style="color:var(--green);">↳ Desconto 10%</td><td style="color:var(--green);">− R$ ${fmt(mBreakdown.reduce((a,r)=>a+r.raw,0)*DISC_RATE)}</td></tr>`;
-      }
-      html += `<tr class="total-row"><td></td><td>Total Mês ${n}</td><td>R$ ${fmt(mNet)}</td></tr>`;
-    }
-  }
-
-  html += `</tbody></table>`;
-  body.innerHTML = html;
-}
-
+// ─── UPDATE PRINCIPAL ─────────────────────────────────────────────────────────
 function update(){
-  // Aplicar visual dos destaques (depende da seleção de identidade)
   applyHLVisual();
 
+  // Valores do projeto base
   const photoGross = photoQty*PRICE_PHOTO;
   document.getElementById('photoCount').textContent=photoQty;
   document.getElementById('photoPlural').textContent=photoQty!==1?'s':'';
+  document.getElementById('photoTotal').textContent='R$ '+fmt(photoGross);
 
   let videoGross=0;
   videoTypes.forEach(v=>{ videoGross+=vQtys[v.id]*v.price; });
-
-  const brand=brandPlans.find(b=>b.id===selBrand);
-  const brandVal=brand?brand.price:0;
-  const menu=menuPlans.find(d=>d.id===selMenu);
-  const menuVal=menu?menu.price:0;
-  const stratVal=stratSel?PRICE_STRAT:0;
-
-  // HL: incluso na identidade completa OU selecionado manualmente
-  const hlIncluded = brand && brand.bonusHL;
-  const hlActive = hlIncluded || hlSel;
-  const hlVal = (hlActive && !hlIncluded) ? PRICE_HL : 0; // só cobra se não estiver incluso
-
-  let monthlyGross=0;
-  monthlyDefs.forEach(i=>{ monthlyGross+=mQtys[i.id]*i.unitPrice; });
-  const hasItems = monthlyGross>0;
-  const hasDuration = mDuration>0;
-  const hasMonthly = hasItems && hasDuration; // só conta como mensal contratado quando tem itens E duração
-  const allMin = mQtys.post>=MIN_POST && mQtys.carrossel>=MIN_CARR && mQtys.mvlongo>=MIN_VID;
-  const discApplied = allMin && hasItems && mDuration===3;
-  const monthlyNet = discApplied ? monthlyGross*(1-DISC_RATE) : monthlyGross;
-  const monthlyTotalPeriod = monthlyNet * mDuration; // total considerando a duração escolhida
-
-  // Desconto de 10% nas fotos quando bônus tier 3 desbloqueado
-  const photoDiscount = discApplied ? photoGross*DISC_RATE : 0;
-  const photoNet = photoGross - photoDiscount;
-
-  document.getElementById('photoTotal').textContent='R$ '+fmt(photoGross);
-
   document.getElementById('videoTotal').textContent=R(videoGross);
 
-  // Monthly notice — três cenários: nada, falta algo, tudo certo
-  const notice=document.getElementById('discNotice');
-  const mfDiscRow=document.getElementById('mfDiscRow');
+  const brand    = brandPlans.find(b=>b.id===selBrand);
+  const brandVal = brand ? brand.price : 0;
+  const menu     = menuPlans.find(d=>d.id===selMenu);
+  const menuVal  = menu ? menu.price : 0;
+  const menuEditVal = (menuEditSel && selMenu) ? PRICE_MENU_EDIT : 0;
+  const stratVal = stratSel ? PRICE_STRAT : 0;
+
+  const hlIncluded = brand && brand.bonusHL;
+  const hlActive   = hlIncluded || hlSel;
+  const hlVal      = (hlActive && !hlIncluded) ? PRICE_HL : 0;
+
+  // Valores mensais
+  const plan       = monthlyPlans.find(p=>p.id===selPlan);
+  const planPrice  = plan ? plan.price : 0;
+  const addonPrice = (addonSel && plan) ? plan.addonPrice : 0;
+  const dur        = effectiveDuration();
+  const hasPlan    = !!plan && dur>0;
+  const discApplied = hasPlan && dur>=3;
+  const monthlyGrossTotal = planPrice + addonPrice; // por mês
+  const monthlyNet = discApplied ? monthlyGrossTotal*(1-DISC_RATE) : monthlyGrossTotal;
+  const monthlyPeriod = monthlyNet * dur;
+
+  // Addon toggle: mostra preço dinâmico conforme plano
+  if(plan){
+    document.getElementById('addonToggleWrap').style.display='block';
+    document.getElementById('addonDesc').textContent=
+      `Redação de legendas, calendário editorial e programação de postagens`;
+    document.getElementById('addonPriceToggle').textContent='R$ '+fmt(plan.addonPrice)+'/mês';
+  }
+
+  // Mostrar/ocultar linha de addon no footer
+  const mfAddonRow=document.getElementById('mfAddonRow');
+  if(addonSel&&plan){ mfAddonRow.style.display='flex'; document.getElementById('mfAddon').textContent='R$ '+fmt(addonPrice); }
+  else { mfAddonRow.style.display='none'; }
+
+  // Notice de desconto
+  const notice   = document.getElementById('discNotice');
+  const mfDiscRow= document.getElementById('mfDiscRow');
   if(discApplied){
     notice.className='discount-notice unlocked';
-    notice.innerHTML='<strong>✅ Desconto de 10% aplicado!</strong> 3 meses + composição mínima selecionados.<br><span style="font-size:12px;">Tem uma necessidade diferente? O pacote é <strong>flexível</strong> — desconto <strong>negociável</strong> conforme sua demanda.</span>';
+    notice.innerHTML=`<strong>✅ Desconto de 10% aplicado!</strong> ${dur} meses selecionados.`;
     mfDiscRow.style.display='flex';
-    document.getElementById('mfDisc').textContent='− R$ '+fmt(monthlyGross*DISC_RATE);
-  } else if(hasItems || hasDuration){
-    // Está montando — mostrar o que falta pro desconto
-    const missing=[];
-    if(mDuration!==3) missing.push(mDuration===0 ? 'escolher 3 meses' : 'fechar 3 meses');
-    if(mQtys.post<MIN_POST) missing.push(`${MIN_POST-mQtys.post} post${MIN_POST-mQtys.post!==1?'s':''}`);
-    if(mQtys.carrossel<MIN_CARR) missing.push(`${MIN_CARR-mQtys.carrossel} carrossel${MIN_CARR-mQtys.carrossel!==1?'/eis':''}`);
-    if(mQtys.mvlongo<MIN_VID) missing.push(`${MIN_VID-mQtys.mvlongo} vídeo${MIN_VID-mQtys.mvlongo!==1?'s':''}`);
+    document.getElementById('mfDisc').textContent='− R$ '+fmt(monthlyGrossTotal*DISC_RATE)+'/mês';
+  } else if(plan||dur>0){
+    const parts=[];
+    if(!plan) parts.push('escolha um plano');
+    if(dur<3&&dur>0) parts.push('feche 3 meses ou mais');
+    else if(dur===0) parts.push('escolha a duração');
     notice.className='discount-notice almost';
-    notice.innerHTML=`<strong>⚡ Quase lá!</strong> Falta: <strong>${missing.join(', ')}</strong> para destravar 10% off.<br><span style="font-size:12px;">Tem uma necessidade diferente? O pacote é <strong>flexível</strong> — desconto <strong>negociável</strong> conforme sua demanda.</span>`;
+    notice.innerHTML=`<strong>⚡ Quase lá!</strong> Para 10% off: <strong>${parts.join(' e ')}</strong>.`;
     mfDiscRow.style.display='none';
   } else {
     notice.className='discount-notice locked';
-    notice.innerHTML='<strong>🔒 Desconto de 10% disponível</strong> ao fechar 3 meses com pelo menos 2 posts, 2 carrosseis e 4 vídeos por mês.<br><span style="font-size:12px;">Tem uma necessidade diferente? O pacote é <strong>flexível</strong> — desconto <strong>negociável</strong> conforme sua demanda.</span>';
+    notice.innerHTML='<strong>🔒 Desconto de 10%</strong> ao fechar 3 meses ou mais.<br><span style="font-size:12px;">Escolha um plano e a duração acima para calcular.</span>';
     mfDiscRow.style.display='none';
   }
-  document.getElementById('mfGross').textContent=R(monthlyGross);
+
+  document.getElementById('mfGross').textContent=R(planPrice);
   document.getElementById('mfMonthly').textContent=R(monthlyNet);
-
-  // Label e valor do total do período mensal
-  const mfTotalLabel = document.getElementById('mfTotalLabel');
-  if(hasMonthly){
-    mfTotalLabel.textContent = mDuration===1 ? 'Total (1 mês)' : `Total ${mDuration} meses`;
-    document.getElementById('mfTotal').textContent='R$ '+fmt(monthlyTotalPeriod);
+  const mfTotalLabel=document.getElementById('mfTotalLabel');
+  if(hasPlan){
+    mfTotalLabel.textContent=dur===1?'Total (1 mês)':`Total (${dur} meses)`;
+    document.getElementById('mfTotal').textContent='R$ '+fmt(monthlyPeriod);
+    document.getElementById('mfNote').textContent=
+      plan.name+(addonSel?' + Gestão de Publicação':'')+
+      ' · '+dur+(dur===1?' mês':' meses');
   } else {
-    mfTotalLabel.textContent = 'Total';
+    mfTotalLabel.textContent='Total';
     document.getElementById('mfTotal').textContent='R$ —';
+    document.getElementById('mfNote').textContent='Selecione o plano e a duração';
   }
 
-  if(hasItems){
-    const parts=monthlyDefs.filter(i=>mQtys[i.id]>0).map(i=>`${mQtys[i.id]}× ${i.name}`);
-    const suffix = hasDuration ? ' · por mês' : ' · por mês (escolha a duração)';
-    document.getElementById('mfNote').textContent=parts.join(' · ')+suffix;
-  } else if(hasDuration) {
-    document.getElementById('mfNote').textContent=`${mDuration} ${mDuration===1?'mês':'meses'} selecionado${mDuration===1?'':'s'} · adicione itens`;
-  } else {
-    document.getElementById('mfNote').textContent='Selecione os itens acima';
-  }
+  // ─── BÔNUS ────────────────────────────────────────────────────────────────
+  // Exige ID completa em todos
+  const idCompleta   = selBrand==='completa';
+  const hasProjBase  = idCompleta && !!menu && photoQty>0;
+  const hasB2        = hasProjBase && stratSel;
+  const hasB3        = hasB2 && hasPlan && dur>=3;
 
-  // Bonus
-  // Projeto Base = identidade + cardápio + fotos
-  const hasProjBase = !!brand && !!menu && photoQty>0;
-  const hasBaseWithStrat = hasProjBase && stratSel;
-  document.getElementById('bonus1').classList.toggle('unlocked',hasProjBase);
-  document.getElementById('bonus2').classList.toggle('unlocked',hasBaseWithStrat);
-  document.getElementById('bonus3').classList.toggle('unlocked',hasProjBase && discApplied);
-  if(hasProjBase && discApplied){
-    const totalSaved = photoDiscount + monthlyGross*DISC_RATE*mDuration;
-    document.getElementById('bonus3orig').textContent=totalSaved>0?'R$ '+fmt(totalSaved)+' economizados':'—';
+  document.getElementById('bonus1').classList.toggle('unlocked', hasProjBase);
+  document.getElementById('bonus2').classList.toggle('unlocked', hasB2);
+  document.getElementById('bonus3').classList.toggle('unlocked', hasB3);
+
+  // Valor do brinde tier 3: 1 mês de gestão de publicação
+  if(hasB3 && plan){
+    document.getElementById('bonus3orig').textContent='R$ '+fmt(plan.addonPrice);
   } else {
     document.getElementById('bonus3orig').textContent='—';
   }
 
-  // Grand total bonus (tier 1 ou 2)
+  // Bônus no total geral (tier mais alto destravado)
   const gtBonus=document.getElementById('gtBonus');
   let bonusText='', bonusVal=0;
-  if(hasBaseWithStrat){ bonusText='1 carrossel + 1 post'; bonusVal=210; }
-  else if(hasProjBase){ bonusText='1 carrossel'; bonusVal=150; }
+  if(hasB3&&plan){
+    bonusText='Gestão de Publicação (1 mês) + 1 post + 1 carrossel';
+    bonusVal=plan.addonPrice+210;
+  } else if(hasB2){
+    bonusText='1 post + 1 carrossel + Capas';
+    bonusVal=210;
+  } else if(hasProjBase){
+    bonusText='1 carrossel + Capas';
+    bonusVal=150;
+  }
   if(bonusText){
     gtBonus.style.display='flex';
     document.getElementById('gtBonusText').textContent='🎁 Bônus: '+bonusText;
     document.getElementById('gtBonusVal').textContent='R$ '+fmt(bonusVal)+' grátis';
-  } else { gtBonus.style.display='none'; }
+  } else {
+    gtBonus.style.display='none';
+  }
 
-  // Linhas do total geral
-  document.getElementById('gtFoto').textContent=R(photoGross);
-  const gtFDisc=document.getElementById('gtFotoDiscRow');
-  if(discApplied && photoGross>0){ gtFDisc.style.display='flex'; document.getElementById('gtFotoDisc').textContent='− R$ '+fmt(photoDiscount); }
-  else { gtFDisc.style.display='none'; }
-
-  document.getElementById('gtVideo').textContent=R(videoGross);
+  // ─── TOTAL GERAL ──────────────────────────────────────────────────────────
   document.getElementById('gtBrand').textContent=R(brandVal);
   document.getElementById('gtStrat').textContent=R(stratVal);
   document.getElementById('gtMenu').textContent=R(menuVal);
-  // Destaques: mostra "Incluso" quando vem com identidade completa
+
+  const gtMenuEditRow=document.getElementById('gtMenuEditRow');
+  if(menuEditVal>0){ gtMenuEditRow.style.display='flex'; document.getElementById('gtMenuEdit').textContent='R$ '+fmt(menuEditVal); }
+  else { gtMenuEditRow.style.display='none'; }
+
+  document.getElementById('gtFoto').textContent=R(photoGross);
+  document.getElementById('gtVideo').textContent=R(videoGross);
+
   if(hlIncluded){
     document.getElementById('gtHL').innerHTML='<span style="color:#6FCF97;">Incluso na Identidade</span>';
   } else {
     document.getElementById('gtHL').textContent=R(hlVal);
   }
 
-  // Label dinâmica da prestação mensal no total geral
-  const gtMonthlyLabel = document.getElementById('gtMonthlyLabel');
-  gtMonthlyLabel.textContent = hasMonthly
-    ? (mDuration===1 ? 'Prestação Mensal (×1)' : `Prestação Mensal (×${mDuration})`)
-    : 'Prestação Mensal';
-  document.getElementById('gtMonthly').textContent=hasMonthly?'R$ '+fmt(monthlyGross*mDuration):'—';
+  const gtMonthlyLabel=document.getElementById('gtMonthlyLabel');
+  gtMonthlyLabel.textContent=hasPlan?`Produção Mensal (×${dur})`:'Produção Mensal';
+  document.getElementById('gtMonthly').textContent=hasPlan?'R$ '+fmt(planPrice*dur):'—';
+
+  const gtAddonRow=document.getElementById('gtAddonRow');
+  if(addonSel&&hasPlan){ gtAddonRow.style.display='flex'; document.getElementById('gtAddon').textContent='R$ '+fmt(addonPrice*dur); }
+  else { gtAddonRow.style.display='none'; }
+
   const gtMDisc=document.getElementById('gtMonthlyDiscRow');
-  if(discApplied&&hasMonthly){ gtMDisc.style.display='flex'; document.getElementById('gtMonthlyDisc').textContent='− R$ '+fmt(monthlyGross*DISC_RATE*mDuration); }
+  if(discApplied&&hasPlan){ gtMDisc.style.display='flex'; document.getElementById('gtMonthlyDisc').textContent='− R$ '+fmt(monthlyGrossTotal*DISC_RATE*dur); }
   else { gtMDisc.style.display='none'; }
 
-  const grand = photoNet + videoGross + brandVal + stratVal + menuVal + hlVal + monthlyTotalPeriod;
+  const grand = brandVal+stratVal+menuVal+menuEditVal+photoGross+videoGross+hlVal+monthlyPeriod;
   if(grand>0){
     document.getElementById('gtTotal').textContent='R$ '+fmt(grand);
-    const parts=[];
-    if(photoQty>0) parts.push(`${photoQty} produto${photoQty!==1?'s':''}`);
-    if(videoGross>0) parts.push('vídeos');
-    if(brand) parts.push(brand.name);
-    if(stratSel) parts.push('estratégia');
-    if(menu) parts.push(menu.name);
-    if(hlActive) parts.push('destaques');
-    if(hasMonthly) parts.push(`${mDuration} ${mDuration===1?'mês':'meses'}`);
-    document.getElementById('gtNote').textContent=parts.join(' · ');
-    document.getElementById('gtLabel').textContent = hasMonthly
-      ? (mDuration===1 ? 'Total Geral (inicial + 1 mês)' : `Total Geral (inicial + ${mDuration} meses)`)
-      : 'Total Projeto Base';
+    const pts=[];
+    if(brand) pts.push(brand.name);
+    if(stratSel) pts.push('estratégia');
+    if(menu) pts.push(menu.name);
+    if(menuEditVal>0) pts.push('editável Canva');
+    if(photoQty>0) pts.push(`${photoQty} produto${photoQty!==1?'s':''}`);
+    if(videoGross>0) pts.push('vídeos');
+    if(hlActive) pts.push('capas');
+    if(hasPlan) pts.push(`${dur} ${dur===1?'mês':'meses'} ${plan.name}`);
+    document.getElementById('gtNote').textContent=pts.join(' · ');
+    document.getElementById('gtLabel').textContent=hasPlan
+      ?`Total Geral (inicial + ${dur} ${dur===1?'mês':'meses'})`
+      :'Total Projeto Base';
   } else {
     document.getElementById('gtTotal').textContent='R$ —';
     document.getElementById('gtNote').textContent='Selecione os itens acima';
     document.getElementById('gtLabel').textContent='Total Geral';
   }
 
-  // SCHEDULE
-  const m0Breakdown=[];
-  if(photoGross>0) m0Breakdown.push({label:'Fotografia ('+photoQty+' produto'+(photoQty!==1?'s':'')+')', val:'R$ '+fmt(photoGross), raw:photoGross});
-  videoTypes.forEach(v=>{ if(vQtys[v.id]>0) m0Breakdown.push({label:vQtys[v.id]+'× '+v.name, val:'R$ '+fmt(vQtys[v.id]*v.price), raw:vQtys[v.id]*v.price}); });
-  if(brandVal>0) m0Breakdown.push({label:brand.name, val:'R$ '+fmt(brandVal), raw:brandVal});
-  if(stratVal>0) m0Breakdown.push({label:'Estratégia de Marca', val:'R$ '+fmt(stratVal), raw:stratVal});
-  if(menuVal>0) m0Breakdown.push({label:menu.name, val:'R$ '+fmt(menuVal), raw:menuVal});
-  if(hlVal>0) m0Breakdown.push({label:'Capas para Destaques', val:'R$ '+fmt(hlVal), raw:hlVal});
-  if(hlIncluded) m0Breakdown.push({label:'Capas para Destaques (incluso na Identidade Completa)', val:'Grátis', raw:0});
+  // ─── CRONOGRAMA ───────────────────────────────────────────────────────────
+  buildSchedule({
+    brand, brandVal, stratVal, menu, menuVal, menuEditVal,
+    photoGross, videoGross, hlVal, hlIncluded,
+    plan, planPrice, addonPrice, addonSel,
+    dur, hasPlan, discApplied, monthlyNet,
+    bonusText, bonusVal,
+    m0Total: brandVal+stratVal+menuVal+menuEditVal+photoGross+videoGross+hlVal,
+  });
+}
 
-  const mBreakdown=[];
-  monthlyDefs.forEach(i=>{ if(mQtys[i.id]>0) mBreakdown.push({label:mQtys[i.id]+'× '+i.name, val:'R$ '+fmt(mQtys[i.id]*i.unitPrice), raw:mQtys[i.id]*i.unitPrice}); });
+function buildSchedule(o){
+  const body=document.getElementById('scheduleBody');
+  if(o.m0Total===0&&!o.hasPlan){
+    body.innerHTML='<div class="schedule-empty">Selecione os itens acima para ver o cronograma de pagamentos.</div>';
+    return;
+  }
+  let html=`<table class="schedule-table"><thead><tr><th>Mês</th><th>O que inclui</th><th>Valor</th></tr></thead><tbody>`;
 
-  const m0Total = photoGross+videoGross+brandVal+stratVal+menuVal+hlVal;
-  buildSchedule(m0Total, m0Breakdown, photoDiscount, monthlyNet, mBreakdown, hasMonthly, discApplied, bonusText, bonusVal, mDuration);
+  // Mês 0
+  if(o.m0Total>0){
+    html+=`<tr class="month-header"><td>Mês 0</td><td>Entrega do Projeto Base</td><td></td></tr>`;
+    if(o.brandVal>0)    html+=`<tr><td></td><td>${o.brand.name}</td><td>R$ ${fmt(o.brandVal)}</td></tr>`;
+    if(o.stratVal>0)    html+=`<tr><td></td><td>Estratégia de Marca</td><td>R$ ${fmt(o.stratVal)}</td></tr>`;
+    if(o.menuVal>0)     html+=`<tr><td></td><td>${o.menu.name}</td><td>R$ ${fmt(o.menuVal)}</td></tr>`;
+    if(o.menuEditVal>0) html+=`<tr><td></td><td>↳ Cardápio editável Canva</td><td>R$ ${fmt(o.menuEditVal)}</td></tr>`;
+    if(o.photoGross>0)  html+=`<tr><td></td><td>Fotografia</td><td>R$ ${fmt(o.photoGross)}</td></tr>`;
+    if(o.videoGross>0)  html+=`<tr><td></td><td>Vídeos</td><td>R$ ${fmt(o.videoGross)}</td></tr>`;
+    if(o.hlVal>0)       html+=`<tr><td></td><td>Capas para Destaques</td><td>R$ ${fmt(o.hlVal)}</td></tr>`;
+    if(o.hlIncluded)    html+=`<tr><td></td><td>Capas para Destaques</td><td style="color:var(--green);">Incluso</td></tr>`;
+    if(o.bonusText)     html+=`<tr class="bonus-row"><td></td><td>🎁 Bônus: ${o.bonusText}</td><td>R$ ${fmt(o.bonusVal)} grátis</td></tr>`;
+    html+=`<tr class="total-row"><td></td><td>Total Mês 0</td><td>R$ ${fmt(o.m0Total)}</td></tr>`;
+  }
+
+  // Meses mensais
+  if(o.hasPlan){
+    const discPerMonth = o.discApplied ? o.monthlyNet*o.dur - o.planPrice*o.dur - (o.addonSel?o.addonPrice*o.dur:0) : 0;
+    for(let n=1;n<=o.dur;n++){
+      html+=`<tr class="month-header"><td>Mês ${n}</td><td>Produção Mensal · ${o.plan.name}</td><td></td></tr>`;
+      html+=`<tr><td></td><td>${o.plan.name}</td><td>R$ ${fmt(o.planPrice)}</td></tr>`;
+      if(o.addonSel) html+=`<tr><td></td><td>Gestão de Publicação</td><td>R$ ${fmt(o.addonPrice)}</td></tr>`;
+      if(o.discApplied) html+=`<tr><td></td><td style="color:var(--green);">↳ Desconto 10%</td><td style="color:var(--green);">− R$ ${fmt((o.planPrice+(o.addonSel?o.addonPrice:0))*DISC_RATE)}</td></tr>`;
+      html+=`<tr class="total-row"><td></td><td>Total Mês ${n}</td><td>R$ ${fmt(o.monthlyNet)}</td></tr>`;
+    }
+  }
+
+  html+=`</tbody></table>`;
+  body.innerHTML=html;
 }
 
 // init
