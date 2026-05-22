@@ -186,6 +186,11 @@
   .bonus-tier-val .orig { text-decoration:line-through; color:#B09070; font-size:11px; display:block; }
   .bonus-tier-val .free { color:var(--green); font-weight:700; font-size:13px; }
 
+  .gt-savings { background:#1A3D28; border-radius:10px; padding:12px 16px; margin-bottom:10px; }
+  .gt-savings-title { font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#6FCF97; margin-bottom:8px; }
+  .gt-savings-row { display:flex; justify-content:space-between; font-size:13px; color:#A8DFC0; padding:3px 0; }
+  .gt-savings-total { display:flex; justify-content:space-between; font-size:14px; font-weight:600; color:#6FCF97; padding-top:8px; border-top:1px solid #2C5C3C; margin-top:6px; }
+
   /* GRAND TOTAL */
   .grand-total-card { background:var(--brown-dark); border-radius:20px; padding:32px 28px; margin-top:8px; position:relative; overflow:hidden; }
   .grand-total-card::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 100% 0%, #C47F2B20 0%, transparent 60%); pointer-events:none; }
@@ -534,6 +539,15 @@
     <div class="gt-bonus" id="gtBonus" style="display:none;">
       <span id="gtBonusText">🎁 Bônus incluído</span>
       <span id="gtBonusVal">—</span>
+    </div>
+    <!-- ECONOMIA TOTAL -->
+    <div class="gt-savings" id="gtSavings" style="display:none;">
+      <div class="gt-savings-title">✦ Você economizou</div>
+      <div id="gtSavingsRows"></div>
+      <div class="gt-savings-total">
+        <span>Total economizado</span>
+        <span id="gtSavingsTotal">—</span>
+      </div>
     </div>
     <div class="gt-final">
       <div>
@@ -1019,6 +1033,40 @@ function update(){
     document.getElementById('gtTotal').textContent='R$ ,';
     document.getElementById('gtNote').textContent='Selecione os itens acima';
     document.getElementById('gtLabel').textContent='Total Geral';
+  }
+
+  // ─── ECONOMIA TOTAL ───────────────────────────────────────────────────────
+  const savingsEl   = document.getElementById('gtSavings');
+  const savingsRows = document.getElementById('gtSavingsRows');
+  const savings = [];
+
+  // Capas inclusas na identidade completa
+  if(hlIncluded) savings.push({ label:'Capas para Destaques (incluso na ID Completa)', val:PRICE_HL });
+
+  // Desconto 10% na produção mensal
+  if(discApplied && hasPlan){
+    savings.push({ label:`Desconto 10% na Produção Mensal (${dur} meses)`, val: monthlyGrossTotal*DISC_RATE*dur });
+  }
+
+  // Brindes dos bônus
+  if(hasB3 && plan){
+    savings.push({ label:'🎁 Gestão de Publicação (1 mês)', val: plan.addonPrice });
+    savings.push({ label:'🎁 1 post + 1 carrossel', val: 210 });
+  } else if(hasB2){
+    savings.push({ label:'🎁 1 post + 1 carrossel', val: 210 });
+  } else if(hasProjBase){
+    savings.push({ label:'🎁 1 carrossel', val: 150 });
+  }
+
+  if(savings.length > 0){
+    savingsEl.style.display='block';
+    const totalSaved = savings.reduce((a,s)=>a+s.val, 0);
+    savingsRows.innerHTML = savings.map(s=>
+      `<div class="gt-savings-row"><span>${s.label}</span><span>R$ ${fmt(s.val)}</span></div>`
+    ).join('');
+    document.getElementById('gtSavingsTotal').textContent = 'R$ '+fmt(totalSaved);
+  } else {
+    savingsEl.style.display='none';
   }
 
   // ─── CRONOGRAMA ───────────────────────────────────────────────────────────
