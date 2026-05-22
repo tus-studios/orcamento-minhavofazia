@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orçamento — Minha Vó Fazia</title>
+<title>Orçamento , Minha Vó Fazia</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
@@ -254,7 +254,7 @@
       <div class="card-icon">🎨</div>
       <div>
         <div class="card-title">Identidade Visual</div>
-        <div class="card-subtitle">Construção da marca — escolha um plano</div>
+        <div class="card-subtitle">Construção da marca , escolha um plano</div>
       </div>
     </div>
     <div class="design-options" id="brandOptions"></div>
@@ -268,7 +268,7 @@
       <div class="card-icon">🧭</div>
       <div>
         <div class="card-title">Estratégia de Marca</div>
-        <div class="card-subtitle">Add-on opcional — direção para toda a comunicação</div>
+        <div class="card-subtitle">Add-on opcional , direção para toda a comunicação</div>
       </div>
     </div>
     <div class="hl-toggle" id="stratToggle" onclick="toggleStrat()">
@@ -281,7 +281,7 @@
       </div>
       <div class="item-price">R$ 700</div>
     </div>
-    <div class="notes-box"><strong>Por que contratar:</strong> a estratégia é o que dá direção pra identidade visual fazer sentido. Sem ela, o visual vira achismo bonito — com ela, cada decisão de marca tem propósito.</div>
+    <div class="notes-box"><strong>Por que contratar:</strong> a estratégia de marca é o trabalho de entender quem você é antes de mostrar como você parece. Posicionamento, território visual, tom de voz e direção criativa, tudo alinhado para que a identidade faça sentido no mercado em que você opera.</div>
   </div>
 
   <!-- CARDÁPIO -->
@@ -336,20 +336,24 @@
     </div>
   </div>
 
-  <!-- VÍDEOS -->
-  <div class="card">
+  <!-- APLICAÇÃO EM CONTEÚDO (add-on da estratégia) -->
+  <div class="card" id="aplicacaoCard" style="display:none;">
     <div class="card-header">
-      <div class="card-icon">🎬</div>
+      <div class="card-icon">🎯</div>
       <div>
-        <div class="card-title">Vídeos</div>
-        <div class="card-subtitle">Produzidos no mês de entrega do projeto</div>
+        <div class="card-title">Aplicação em Conteúdo</div>
+        <div class="card-subtitle">Add-on da Estratégia de Marca</div>
       </div>
     </div>
-    <div class="section-label" style="margin-bottom:12px;">Escolha a quantidade</div>
-    <div class="video-type-row" id="videoTypeRow"></div>
-    <div class="video-footer">
-      <span>Subtotal Vídeos</span>
-      <span class="video-footer-val" id="videoTotal">R$ 0</span>
+    <div class="hl-toggle" id="aplicacaoToggle" onclick="toggleAplicacao()">
+      <div class="hl-toggle-left">
+        <div class="checkbox" id="aplicacaoCheck"></div>
+        <div>
+          <div class="item-name">Materiais de aplicação da nova identidade</div>
+          <div class="item-desc">Quantidade e formatos definidos após a finalização da estratégia de marca</div>
+        </div>
+      </div>
+      <div class="item-price">R$ 500</div>
     </div>
   </div>
 
@@ -377,14 +381,14 @@
   <!-- BLOCO 2: PRODUÇÃO MENSAL -->
   <div class="block-label" style="margin-top:24px;">
     <div class="block-num">2</div>
-    <div class="block-title">Produção Mensal <span style="font-size:13px;font-weight:400;color:var(--text-light);font-family:'DM Sans',sans-serif;">— monte como quiser</span></div>
+    <div class="block-title">Produção Mensal <span style="font-size:13px;font-weight:400;color:var(--text-light);font-family:'DM Sans',sans-serif;">, monte como quiser</span></div>
   </div>
 
   <div class="monthly-intro">
     <div class="monthly-intro-label">Conteúdo contínuo</div>
     <div class="monthly-intro-title">Escolha o plano e a duração</div>
     <div class="monthly-intro-desc">
-      Você contrata nossa capacidade criativa — a composição de formatos é definida estrategicamente a cada mês.
+      Você contrata nossa capacidade criativa , a composição de formatos é definida estrategicamente a cada mês.
       <strong style="color:var(--gold);">10% de desconto</strong> ao fechar 3 meses ou mais.
     </div>
   </div>
@@ -411,7 +415,7 @@
             <div class="addon-name">Gestão de Publicação <span style="font-size:12px;font-weight:400;color:var(--text-light);">(copy de legenda e programação de upload)</span></div>
           </div>
         </div>
-        <div class="addon-price" id="addonPrice">—</div>
+        <div class="addon-price" id="addonPrice">,</div>
       </div>
       <ul class="addon-includes">
         <li>Redação das legendas</li>
@@ -430,7 +434,7 @@
             <div class="item-desc" id="addonDesc">Selecione um plano para ver o valor</div>
           </div>
         </div>
-        <div class="item-price" id="addonPriceToggle">—</div>
+        <div class="item-price" id="addonPriceToggle">,</div>
       </div>
     </div>
 
@@ -456,17 +460,17 @@
     </div>
 
     <div class="monthly-footer">
-      <div class="mf-row"><span>Plano mensal (bruto)</span><span id="mfGross">—</span></div>
-      <div class="mf-row" id="mfAddonRow" style="display:none;"><span>↳ Gestão de Publicação</span><span id="mfAddon">—</span></div>
-      <div class="mf-row disc" id="mfDiscRow" style="display:none;"><span>↳ Desconto 10%</span><span id="mfDisc">—</span></div>
+      <div class="mf-row"><span>Plano mensal (bruto)</span><span id="mfGross">,</span></div>
+      <div class="mf-row" id="mfAddonRow" style="display:none;"><span>↳ Gestão de Publicação</span><span id="mfAddon">,</span></div>
+      <div class="mf-row disc" id="mfDiscRow" style="display:none;"><span>↳ Desconto 10%</span><span id="mfDisc">,</span></div>
       <div class="mf-divider"></div>
-      <div class="mf-row hl"><span>Valor mensal líquido</span><span id="mfMonthly">—</span></div>
+      <div class="mf-row hl"><span>Valor mensal líquido</span><span id="mfMonthly">,</span></div>
       <div class="mf-total">
         <div>
           <div class="mf-total-label" id="mfTotalLabel">Total</div>
           <div class="mf-note" id="mfNote">Selecione o plano e a duração</div>
         </div>
-        <div class="mf-total-val" id="mfTotal">R$ —</div>
+        <div class="mf-total-val" id="mfTotal">R$ ,</div>
       </div>
     </div>
     <div class="notes-box">
@@ -509,7 +513,7 @@
           <div class="bonus-tier-name">ID Completa + Cardápio + Fotos + Estratégia + Produção Mensal (3+ meses)</div>
           <div class="bonus-tier-desc">Ganha: 1 mês de Gestão de Publicação grátis (copy de legenda e programação de upload) · 1 post + 1 carrossel · Capas para Destaques incluídas</div>
         </div>
-        <div class="bonus-tier-val"><span class="orig" id="bonus3orig">—</span><span class="free">GRÁTIS</span></div>
+        <div class="bonus-tier-val"><span class="orig" id="bonus3orig">,</span><span class="free">GRÁTIS</span></div>
       </div>
 
     </div>
@@ -518,28 +522,28 @@
   <!-- TOTAL GERAL -->
   <div class="grand-total-card">
     <div class="gt-rows">
-      <div class="gt-row"><span>Identidade Visual</span><span id="gtBrand">—</span></div>
-      <div class="gt-row"><span>Estratégia de Marca</span><span id="gtStrat">—</span></div>
-      <div class="gt-row"><span>Design do Cardápio</span><span id="gtMenu">—</span></div>
-      <div class="gt-row" id="gtMenuEditRow" style="display:none;"><span>↳ Cardápio editável Canva</span><span id="gtMenuEdit">—</span></div>
-      <div class="gt-row"><span>Fotografia</span><span id="gtFoto">—</span></div>
-      <div class="gt-row"><span>Vídeos (Projeto Base)</span><span id="gtVideo">—</span></div>
-      <div class="gt-row"><span>Capas para Destaques</span><span id="gtHL">—</span></div>
+      <div class="gt-row"><span>Identidade Visual</span><span id="gtBrand">,</span></div>
+      <div class="gt-row"><span>Estratégia de Marca</span><span id="gtStrat">,</span></div>
+      <div class="gt-row"><span>Design do Cardápio</span><span id="gtMenu">,</span></div>
+      <div class="gt-row" id="gtMenuEditRow" style="display:none;"><span>↳ Cardápio editável Canva</span><span id="gtMenuEdit">,</span></div>
+      <div class="gt-row"><span>Fotografia</span><span id="gtFoto">,</span></div>
+      <div class="gt-row"><span>Aplicação em Conteúdo</span><span id="gtVideo">,</span></div>
+      <div class="gt-row"><span>Capas para Destaques</span><span id="gtHL">,</span></div>
       <div class="gt-divider"></div>
-      <div class="gt-row"><span id="gtMonthlyLabel">Produção Mensal</span><span id="gtMonthly">—</span></div>
-      <div class="gt-row" id="gtAddonRow" style="display:none;"><span>↳ Gestão de Publicação</span><span id="gtAddon">—</span></div>
-      <div class="gt-row disc" id="gtMonthlyDiscRow" style="display:none;"><span>↳ Desconto 10%</span><span id="gtMonthlyDisc">—</span></div>
+      <div class="gt-row"><span id="gtMonthlyLabel">Produção Mensal</span><span id="gtMonthly">,</span></div>
+      <div class="gt-row" id="gtAddonRow" style="display:none;"><span>↳ Gestão de Publicação</span><span id="gtAddon">,</span></div>
+      <div class="gt-row disc" id="gtMonthlyDiscRow" style="display:none;"><span>↳ Desconto 10%</span><span id="gtMonthlyDisc">,</span></div>
     </div>
     <div class="gt-bonus" id="gtBonus" style="display:none;">
       <span id="gtBonusText">🎁 Bônus incluído</span>
-      <span id="gtBonusVal">—</span>
+      <span id="gtBonusVal">,</span>
     </div>
     <div class="gt-final">
       <div>
         <div class="gt-final-label" id="gtLabel">Total Geral</div>
         <div class="gt-note" id="gtNote">Selecione os itens acima</div>
       </div>
-      <div class="gt-final-val" id="gtTotal">R$ —</div>
+      <div class="gt-final-val" id="gtTotal">R$ ,</div>
     </div>
   </div>
 
@@ -559,11 +563,12 @@
 
 <script>
 // ─── CONSTANTES ───────────────────────────────────────────────────────────────
-const PRICE_PHOTO    = 50;
-const PRICE_HL       = 100;
-const PRICE_STRAT    = 700;
+const PRICE_PHOTO     = 50;
+const PRICE_HL        = 100;
+const PRICE_STRAT     = 700;
+const PRICE_APLICACAO = 500;
 const PRICE_MENU_EDIT = 50;
-const DISC_RATE      = 0.10;
+const DISC_RATE       = 0.10;
 
 const brandPlans = [
   { id:'basica',   name:'Identidade Visual Básica',
@@ -583,9 +588,6 @@ const menuPlans = [
     price:350 },
 ];
 
-const videoTypes = [
-  { id:'vlongo', name:'Vídeo Completo', desc:'Até 1min · múltiplos produtos · com narração', price:250 },
-];
 
 const monthlyPlans = [
   {
@@ -624,20 +626,20 @@ const monthlyPlans = [
 ];
 
 // ─── ESTADO ───────────────────────────────────────────────────────────────────
-let photoQty    = 0;
-let vQtys       = { vlongo:0 };
-let selBrand    = null;
-let selMenu     = null;
-let menuEditSel = false;
-let stratSel    = false;
-let hlSel       = false;
-let selPlan     = null;   // 'essencial' | 'estrategico' | null
-let addonSel    = false;
-let mDuration   = 0;      // 0 = não escolhido; 1, 2, N = meses; 99 = custom
+let photoQty      = 0;
+let selBrand      = null;
+let selMenu       = null;
+let menuEditSel   = false;
+let stratSel      = false;
+let aplicacaoSel  = false;
+let hlSel         = false;
+let selPlan       = null;
+let addonSel      = false;
+let mDuration     = 0;
 
 // ─── UTILS ────────────────────────────────────────────────────────────────────
 function fmt(v){ return v.toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0}); }
-function R(v)  { return v>0 ? 'R$ '+fmt(v) : '—'; }
+function R(v)  { return v>0 ? 'R$ '+fmt(v) : ','; }
 function effectiveDuration(){
   if(mDuration===99){
     const v=parseInt(document.getElementById('customMonthsInput').value,10);
@@ -653,30 +655,6 @@ function setPhoto(v){
   photoQty=n;
   document.getElementById('photoInput').value=n;
   document.getElementById('photoCounter').classList.toggle('has-qty',n>0);
-  update();
-}
-
-// ─── VÍDEOS ───────────────────────────────────────────────────────────────────
-const videoRow=document.getElementById('videoTypeRow');
-videoTypes.forEach(v=>{
-  const el=document.createElement('div');
-  el.className='video-type-card'; el.id='vtc-'+v.id;
-  el.innerHTML=`<div class="vtc-header"><div class="vtc-name">${v.name}</div><div class="vtc-price">R$ ${v.price}</div></div>
-    <div class="vtc-desc">${v.desc}</div>
-    <div class="vtc-qty-row">
-      <button class="qbtn-sm" onclick="chgV('${v.id}',-1)">−</button>
-      <div class="qcount" id="vq-${v.id}">0</div>
-      <button class="qbtn-sm" onclick="chgV('${v.id}',1)">+</button>
-      <span class="vtc-sub" id="vs-${v.id}">R$ 0</span>
-    </div>`;
-  videoRow.appendChild(el);
-});
-function chgV(id,d){
-  vQtys[id]=Math.max(0,vQtys[id]+d);
-  document.getElementById('vq-'+id).textContent=vQtys[id];
-  const v=videoTypes.find(x=>x.id===id);
-  document.getElementById('vs-'+id).textContent='R$ '+fmt(vQtys[id]*v.price);
-  document.getElementById('vtc-'+id).classList.toggle('has-qty',vQtys[id]>0);
   update();
 }
 
@@ -718,7 +696,25 @@ function toggleStrat(){
   c.style.background=stratSel?'var(--caramel)':'transparent';
   c.style.borderColor=stratSel?'var(--caramel)':'#C9AC80';
   c.textContent=stratSel?'✓':'';
+  // Se desmarcar estratégia, desmarca aplicação também
+  if(!stratSel){ aplicacaoSel=false; applyAplicacaoVisual(); }
+  document.getElementById('aplicacaoCard').style.display=stratSel?'block':'none';
   update();
+}
+
+// ─── APLICAÇÃO EM CONTEÚDO ────────────────────────────────────────────────────
+function toggleAplicacao(){
+  aplicacaoSel=!aplicacaoSel;
+  applyAplicacaoVisual();
+  update();
+}
+function applyAplicacaoVisual(){
+  const tog=document.getElementById('aplicacaoToggle');
+  const c=document.getElementById('aplicacaoCheck');
+  tog.classList.toggle('selected',aplicacaoSel);
+  c.style.background=aplicacaoSel?'var(--caramel)':'transparent';
+  c.style.borderColor=aplicacaoSel?'var(--caramel)':'#C9AC80';
+  c.textContent=aplicacaoSel?'✓':'';
 }
 
 // ─── CARDÁPIO ─────────────────────────────────────────────────────────────────
@@ -778,7 +774,7 @@ function applyHLVisual(){
     tog.classList.add('included');
     c.style.background='var(--green)'; c.style.borderColor='var(--green)'; c.textContent='✓';
     document.getElementById('hlPrice').innerHTML='<span class="included-badge">✓ Incluso</span>';
-    document.getElementById('hlDesc').textContent='Brinde da Identidade Visual Completa — capas alinhadas à sua nova marca';
+    document.getElementById('hlDesc').textContent='Brinde da Identidade Visual Completa , capas alinhadas à sua nova marca';
   } else {
     document.getElementById('hlPrice').textContent='R$ '+PRICE_HL;
     document.getElementById('hlDesc').textContent='Capas alinhadas à nova identidade visual da marca';
@@ -866,9 +862,7 @@ function update(){
   document.getElementById('photoPlural').textContent=photoQty!==1?'s':'';
   document.getElementById('photoTotal').textContent='R$ '+fmt(photoGross);
 
-  let videoGross=0;
-  videoTypes.forEach(v=>{ videoGross+=vQtys[v.id]*v.price; });
-  document.getElementById('videoTotal').textContent=R(videoGross);
+  const aplicacaoVal = aplicacaoSel ? PRICE_APLICACAO : 0;
 
   const brand    = brandPlans.find(b=>b.id===selBrand);
   const brandVal = brand ? brand.price : 0;
@@ -938,7 +932,7 @@ function update(){
       ' · '+dur+(dur===1?' mês':' meses');
   } else {
     mfTotalLabel.textContent='Total';
-    document.getElementById('mfTotal').textContent='R$ —';
+    document.getElementById('mfTotal').textContent='R$ ,';
     document.getElementById('mfNote').textContent='Selecione o plano e a duração';
   }
 
@@ -957,7 +951,7 @@ function update(){
   if(hasB3 && plan){
     document.getElementById('bonus3orig').textContent='R$ '+fmt(plan.addonPrice);
   } else {
-    document.getElementById('bonus3orig').textContent='—';
+    document.getElementById('bonus3orig').textContent=',';
   }
 
   // Bônus no total geral (tier mais alto destravado)
@@ -991,7 +985,7 @@ function update(){
   else { gtMenuEditRow.style.display='none'; }
 
   document.getElementById('gtFoto').textContent=R(photoGross);
-  document.getElementById('gtVideo').textContent=R(videoGross);
+  document.getElementById('gtVideo').textContent=R(aplicacaoVal);
 
   if(hlIncluded){
     document.getElementById('gtHL').innerHTML='<span style="color:#6FCF97;">Incluso na Identidade</span>';
@@ -1001,7 +995,7 @@ function update(){
 
   const gtMonthlyLabel=document.getElementById('gtMonthlyLabel');
   gtMonthlyLabel.textContent=hasPlan?`Produção Mensal (×${dur})`:'Produção Mensal';
-  document.getElementById('gtMonthly').textContent=hasPlan?'R$ '+fmt(planPrice*dur):'—';
+  document.getElementById('gtMonthly').textContent=hasPlan?'R$ '+fmt(planPrice*dur):',';
 
   const gtAddonRow=document.getElementById('gtAddonRow');
   if(addonSel&&hasPlan){ gtAddonRow.style.display='flex'; document.getElementById('gtAddon').textContent='R$ '+fmt(addonPrice*dur); }
@@ -1011,7 +1005,7 @@ function update(){
   if(discApplied&&hasPlan){ gtMDisc.style.display='flex'; document.getElementById('gtMonthlyDisc').textContent='− R$ '+fmt(monthlyGrossTotal*DISC_RATE*dur); }
   else { gtMDisc.style.display='none'; }
 
-  const grand = brandVal+stratVal+menuVal+menuEditVal+photoGross+videoGross+hlVal+monthlyPeriod;
+  const grand = brandVal+stratVal+menuVal+menuEditVal+photoGross+aplicacaoVal+hlVal+monthlyPeriod;
   if(grand>0){
     document.getElementById('gtTotal').textContent='R$ '+fmt(grand);
     const pts=[];
@@ -1020,7 +1014,7 @@ function update(){
     if(menu) pts.push(menu.name);
     if(menuEditVal>0) pts.push('editável Canva');
     if(photoQty>0) pts.push(`${photoQty} produto${photoQty!==1?'s':''}`);
-    if(videoGross>0) pts.push('vídeos');
+    if(aplicacaoVal>0) pts.push('aplicação em conteúdo');
     if(hlActive) pts.push('capas');
     if(hasPlan) pts.push(`${dur} ${dur===1?'mês':'meses'} ${plan.name}`);
     document.getElementById('gtNote').textContent=pts.join(' · ');
@@ -1028,7 +1022,7 @@ function update(){
       ?`Total Geral (inicial + ${dur} ${dur===1?'mês':'meses'})`
       :'Total Projeto Base';
   } else {
-    document.getElementById('gtTotal').textContent='R$ —';
+    document.getElementById('gtTotal').textContent='R$ ,';
     document.getElementById('gtNote').textContent='Selecione os itens acima';
     document.getElementById('gtLabel').textContent='Total Geral';
   }
@@ -1036,11 +1030,11 @@ function update(){
   // ─── CRONOGRAMA ───────────────────────────────────────────────────────────
   buildSchedule({
     brand, brandVal, stratVal, menu, menuVal, menuEditVal,
-    photoGross, videoGross, hlVal, hlIncluded,
+    photoGross, aplicacaoVal, hlVal, hlIncluded,
     plan, planPrice, addonPrice, addonSel,
     dur, hasPlan, discApplied, monthlyNet,
     bonusText, bonusVal,
-    m0Total: brandVal+stratVal+menuVal+menuEditVal+photoGross+videoGross+hlVal,
+    m0Total: brandVal+stratVal+menuVal+menuEditVal+photoGross+aplicacaoVal+hlVal,
   });
 }
 
@@ -1060,7 +1054,7 @@ function buildSchedule(o){
     if(o.menuVal>0)     html+=`<tr><td></td><td>${o.menu.name}</td><td>R$ ${fmt(o.menuVal)}</td></tr>`;
     if(o.menuEditVal>0) html+=`<tr><td></td><td>↳ Cardápio editável Canva</td><td>R$ ${fmt(o.menuEditVal)}</td></tr>`;
     if(o.photoGross>0)  html+=`<tr><td></td><td>Fotografia</td><td>R$ ${fmt(o.photoGross)}</td></tr>`;
-    if(o.videoGross>0)  html+=`<tr><td></td><td>Vídeos</td><td>R$ ${fmt(o.videoGross)}</td></tr>`;
+    if(o.aplicacaoVal>0)  html+=`<tr><td></td><td>Aplicação em Conteúdo</td><td>R$ ${fmt(o.aplicacaoVal)}</td></tr>`;
     if(o.hlVal>0)       html+=`<tr><td></td><td>Capas para Destaques</td><td>R$ ${fmt(o.hlVal)}</td></tr>`;
     if(o.hlIncluded)    html+=`<tr><td></td><td>Capas para Destaques</td><td style="color:var(--green);">Incluso</td></tr>`;
     if(o.bonusText)     html+=`<tr class="bonus-row"><td></td><td>🎁 Bônus: ${o.bonusText}</td><td>R$ ${fmt(o.bonusVal)} grátis</td></tr>`;
