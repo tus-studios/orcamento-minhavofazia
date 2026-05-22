@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orçamento , Minha Vó Fazia</title>
+<title>Orçamento, Minha Vó Fazia</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
@@ -254,7 +254,7 @@
       <div class="card-icon">🎨</div>
       <div>
         <div class="card-title">Identidade Visual</div>
-        <div class="card-subtitle">Construção da marca , escolha um plano</div>
+        <div class="card-subtitle">Construção da marca, escolha um plano</div>
       </div>
     </div>
     <div class="design-options" id="brandOptions"></div>
@@ -268,7 +268,7 @@
       <div class="card-icon">🧭</div>
       <div>
         <div class="card-title">Estratégia de Marca</div>
-        <div class="card-subtitle">Add-on opcional , direção para toda a comunicação</div>
+        <div class="card-subtitle">Add-on opcional, direção para toda a comunicação</div>
       </div>
     </div>
     <div class="hl-toggle" id="stratToggle" onclick="toggleStrat()">
@@ -282,6 +282,27 @@
       <div class="item-price">R$ 700</div>
     </div>
     <div class="notes-box"><strong>Por que contratar:</strong> a estratégia de marca é o trabalho de entender quem você é antes de mostrar como você parece. Posicionamento, território visual, tom de voz e direção criativa, tudo alinhado para que a identidade faça sentido no mercado em que você opera.</div>
+  </div>
+
+  <!-- APLICAÇÃO EM CONTEÚDO (add-on da estratégia) -->
+  <div class="card" id="aplicacaoCard" style="display:none;">
+    <div class="card-header">
+      <div class="card-icon">🎯</div>
+      <div>
+        <div class="card-title">Aplicação em Conteúdo</div>
+        <div class="card-subtitle">Add-on da Estratégia de Marca</div>
+      </div>
+    </div>
+    <div class="hl-toggle" id="aplicacaoToggle" onclick="toggleAplicacao()">
+      <div class="hl-toggle-left">
+        <div class="checkbox" id="aplicacaoCheck"></div>
+        <div>
+          <div class="item-name">Materiais de aplicação da nova identidade</div>
+          <div class="item-desc">Até 3 conteúdos. Formatos definidos após finalização da estratégia de marca.</div>
+        </div>
+      </div>
+      <div class="item-price">R$ 500</div>
+    </div>
   </div>
 
   <!-- CARDÁPIO -->
@@ -336,27 +357,6 @@
     </div>
   </div>
 
-  <!-- APLICAÇÃO EM CONTEÚDO (add-on da estratégia) -->
-  <div class="card" id="aplicacaoCard" style="display:none;">
-    <div class="card-header">
-      <div class="card-icon">🎯</div>
-      <div>
-        <div class="card-title">Aplicação em Conteúdo</div>
-        <div class="card-subtitle">Add-on da Estratégia de Marca</div>
-      </div>
-    </div>
-    <div class="hl-toggle" id="aplicacaoToggle" onclick="toggleAplicacao()">
-      <div class="hl-toggle-left">
-        <div class="checkbox" id="aplicacaoCheck"></div>
-        <div>
-          <div class="item-name">Materiais de aplicação da nova identidade</div>
-          <div class="item-desc">Quantidade e formatos definidos após a finalização da estratégia de marca</div>
-        </div>
-      </div>
-      <div class="item-price">R$ 500</div>
-    </div>
-  </div>
-
   <!-- CAPAS DESTAQUES -->
   <div class="card">
     <div class="card-header">
@@ -381,14 +381,14 @@
   <!-- BLOCO 2: PRODUÇÃO MENSAL -->
   <div class="block-label" style="margin-top:24px;">
     <div class="block-num">2</div>
-    <div class="block-title">Produção Mensal <span style="font-size:13px;font-weight:400;color:var(--text-light);font-family:'DM Sans',sans-serif;">, monte como quiser</span></div>
+    <div class="block-title">Produção Mensal</div>
   </div>
 
   <div class="monthly-intro">
     <div class="monthly-intro-label">Conteúdo contínuo</div>
     <div class="monthly-intro-title">Escolha o plano e a duração</div>
     <div class="monthly-intro-desc">
-      Você contrata nossa capacidade criativa , a composição de formatos é definida estrategicamente a cada mês.
+      Você contrata nossa capacidade criativa, a composição de formatos é definida estrategicamente a cada mês.
       <strong style="color:var(--gold);">10% de desconto</strong> ao fechar 3 meses ou mais.
     </div>
   </div>
@@ -415,7 +415,7 @@
             <div class="addon-name">Gestão de Publicação <span style="font-size:12px;font-weight:400;color:var(--text-light);">(copy de legenda e programação de upload)</span></div>
           </div>
         </div>
-        <div class="addon-price" id="addonPrice">,</div>
+        <div class="addon-price" id="addonPrice">—</div>
       </div>
       <ul class="addon-includes">
         <li>Redação das legendas</li>
@@ -434,7 +434,7 @@
             <div class="item-desc" id="addonDesc">Selecione um plano para ver o valor</div>
           </div>
         </div>
-        <div class="item-price" id="addonPriceToggle">,</div>
+        <div class="item-price" id="addonPriceToggle">—</div>
       </div>
     </div>
 
@@ -460,11 +460,11 @@
     </div>
 
     <div class="monthly-footer">
-      <div class="mf-row"><span>Plano mensal (bruto)</span><span id="mfGross">,</span></div>
-      <div class="mf-row" id="mfAddonRow" style="display:none;"><span>↳ Gestão de Publicação</span><span id="mfAddon">,</span></div>
-      <div class="mf-row disc" id="mfDiscRow" style="display:none;"><span>↳ Desconto 10%</span><span id="mfDisc">,</span></div>
+      <div class="mf-row"><span>Plano mensal (bruto)</span><span id="mfGross">—</span></div>
+      <div class="mf-row" id="mfAddonRow" style="display:none;"><span>↳ Gestão de Publicação</span><span id="mfAddon">—</span></div>
+      <div class="mf-row disc" id="mfDiscRow" style="display:none;"><span>↳ Desconto 10%</span><span id="mfDisc">—</span></div>
       <div class="mf-divider"></div>
-      <div class="mf-row hl"><span>Valor mensal líquido</span><span id="mfMonthly">,</span></div>
+      <div class="mf-row hl"><span>Valor mensal líquido</span><span id="mfMonthly">—</span></div>
       <div class="mf-total">
         <div>
           <div class="mf-total-label" id="mfTotalLabel">Total</div>
@@ -472,9 +472,6 @@
         </div>
         <div class="mf-total-val" id="mfTotal">R$ ,</div>
       </div>
-    </div>
-    <div class="notes-box">
-      <strong>Captação in loco:</strong> R$ 50 por visita à loja, quando necessário.
     </div>
   </div>
 
@@ -513,7 +510,7 @@
           <div class="bonus-tier-name">ID Completa + Cardápio + Fotos + Estratégia + Produção Mensal (3+ meses)</div>
           <div class="bonus-tier-desc">Ganha: 1 mês de Gestão de Publicação grátis (copy de legenda e programação de upload) · 1 post + 1 carrossel · Capas para Destaques incluídas</div>
         </div>
-        <div class="bonus-tier-val"><span class="orig" id="bonus3orig">,</span><span class="free">GRÁTIS</span></div>
+        <div class="bonus-tier-val"><span class="orig" id="bonus3orig">—</span><span class="free">GRÁTIS</span></div>
       </div>
 
     </div>
@@ -522,21 +519,21 @@
   <!-- TOTAL GERAL -->
   <div class="grand-total-card">
     <div class="gt-rows">
-      <div class="gt-row"><span>Identidade Visual</span><span id="gtBrand">,</span></div>
-      <div class="gt-row"><span>Estratégia de Marca</span><span id="gtStrat">,</span></div>
-      <div class="gt-row"><span>Design do Cardápio</span><span id="gtMenu">,</span></div>
-      <div class="gt-row" id="gtMenuEditRow" style="display:none;"><span>↳ Cardápio editável Canva</span><span id="gtMenuEdit">,</span></div>
-      <div class="gt-row"><span>Fotografia</span><span id="gtFoto">,</span></div>
-      <div class="gt-row"><span>Aplicação em Conteúdo</span><span id="gtVideo">,</span></div>
-      <div class="gt-row"><span>Capas para Destaques</span><span id="gtHL">,</span></div>
+      <div class="gt-row"><span>Identidade Visual</span><span id="gtBrand">—</span></div>
+      <div class="gt-row"><span>Estratégia de Marca</span><span id="gtStrat">—</span></div>
+      <div class="gt-row"><span>Design do Cardápio</span><span id="gtMenu">—</span></div>
+      <div class="gt-row" id="gtMenuEditRow" style="display:none;"><span>↳ Cardápio editável Canva</span><span id="gtMenuEdit">—</span></div>
+      <div class="gt-row"><span>Fotografia</span><span id="gtFoto">—</span></div>
+      <div class="gt-row"><span>Aplicação em Conteúdo</span><span id="gtVideo">—</span></div>
+      <div class="gt-row"><span>Capas para Destaques</span><span id="gtHL">—</span></div>
       <div class="gt-divider"></div>
-      <div class="gt-row"><span id="gtMonthlyLabel">Produção Mensal</span><span id="gtMonthly">,</span></div>
-      <div class="gt-row" id="gtAddonRow" style="display:none;"><span>↳ Gestão de Publicação</span><span id="gtAddon">,</span></div>
-      <div class="gt-row disc" id="gtMonthlyDiscRow" style="display:none;"><span>↳ Desconto 10%</span><span id="gtMonthlyDisc">,</span></div>
+      <div class="gt-row"><span id="gtMonthlyLabel">Produção Mensal</span><span id="gtMonthly">—</span></div>
+      <div class="gt-row" id="gtAddonRow" style="display:none;"><span>↳ Gestão de Publicação</span><span id="gtAddon">—</span></div>
+      <div class="gt-row disc" id="gtMonthlyDiscRow" style="display:none;"><span>↳ Desconto 10%</span><span id="gtMonthlyDisc">—</span></div>
     </div>
     <div class="gt-bonus" id="gtBonus" style="display:none;">
       <span id="gtBonusText">🎁 Bônus incluído</span>
-      <span id="gtBonusVal">,</span>
+      <span id="gtBonusVal">—</span>
     </div>
     <div class="gt-final">
       <div>
@@ -589,20 +586,21 @@ const menuPlans = [
 ];
 
 
+const commonIncludes = [
+  'Direção criativa aplicada à comunicação da marca',
+  'Planejamento mensal de conteúdos',
+  'Captação de material',
+  'Edição e finalização dos materiais',
+  'Acompanhamento da consistência visual e posicionamento',
+];
+
 const monthlyPlans = [
   {
     id:'essencial',
     name:'Plano Essencial',
     tagline:'Ideal para marcas que desejam manter uma presença digital consistente com uma produção mais enxuta e estratégica.',
-    includes:[
-      'Planejamento mensal de conteúdo',
-      'Direção criativa aplicada à comunicação da marca',
-      'Meia diária de captação mensal',
-      'Edição e finalização dos materiais',
-      'Mínimo de 4 conteúdos mensais entre vídeos e posts',
-      'Acompanhamento da consistência visual e posicionamento',
-    ],
-    note:'Os formatos são definidos estrategicamente conforme as necessidades de comunicação de cada mês.',
+    differential: 'Mínimo de 4 conteúdos mensais entre vídeos e posts',
+    note:'Os formatos são definidos estrategicamente conforme os objetivos de comunicação de cada período.',
     price: 1500,
     addonPrice: 300,
   },
@@ -610,15 +608,7 @@ const monthlyPlans = [
     id:'estrategico',
     name:'Plano Estratégico',
     tagline:'Indicado para marcas que desejam fortalecer posicionamento, aumentar frequência e construir presença digital de forma mais consistente.',
-    includes:[
-      'Planejamento estratégico de conteúdo',
-      'Direção criativa contínua',
-      '1 diária de captação mensal',
-      'Edição e finalização dos materiais',
-      'Mínimo de 8 conteúdos mensais entre vídeos e posts',
-      'Acompanhamento da linguagem visual e posicionamento',
-      'Maior flexibilidade de formatos e desdobramentos',
-    ],
+    differential: 'Mínimo de 8 conteúdos mensais entre vídeos e posts',
     note:'Os formatos são definidos estrategicamente conforme os objetivos de comunicação de cada período.',
     price: 2800,
     addonPrice: 590,
@@ -639,7 +629,7 @@ let mDuration     = 0;
 
 // ─── UTILS ────────────────────────────────────────────────────────────────────
 function fmt(v){ return v.toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0}); }
-function R(v)  { return v>0 ? 'R$ '+fmt(v) : ','; }
+function R(v)  { return v>0 ? 'R$ '+fmt(v) : '—'; }
 function effectiveDuration(){
   if(mDuration===99){
     const v=parseInt(document.getElementById('customMonthsInput').value,10);
@@ -774,7 +764,7 @@ function applyHLVisual(){
     tog.classList.add('included');
     c.style.background='var(--green)'; c.style.borderColor='var(--green)'; c.textContent='✓';
     document.getElementById('hlPrice').innerHTML='<span class="included-badge">✓ Incluso</span>';
-    document.getElementById('hlDesc').textContent='Brinde da Identidade Visual Completa , capas alinhadas à sua nova marca';
+    document.getElementById('hlDesc').textContent='Brinde da Identidade Visual Completa, capas alinhadas à sua nova marca';
   } else {
     document.getElementById('hlPrice').textContent='R$ '+PRICE_HL;
     document.getElementById('hlDesc').textContent='Capas alinhadas à nova identidade visual da marca';
@@ -799,8 +789,12 @@ monthlyPlans.forEach(p=>{
     </div>
     <div class="plan-tagline">${p.tagline}</div>
     <div class="plan-includes-title">O que inclui</div>
-    <ul class="plan-includes">${p.includes.map(i=>`<li>${i}</li>`).join('')}</ul>
+    <ul class="plan-includes">
+      ${commonIncludes.map(i=>`<li>${i}</li>`).join('')}
+      <li style="color:var(--brown-warm);font-weight:500;">${p.differential}</li>
+    </ul>
     <div class="plan-note">${p.note}</div>
+    <div class="plan-note" style="margin-top:6px;">Captação in loco: R$ 50 por visita, quando necessário.</div>
     <div class="plan-price">R$ ${fmt(p.price)}<span>/mês</span></div>`;
   el.addEventListener('click',()=>{
     selPlan=p.id;
@@ -951,7 +945,7 @@ function update(){
   if(hasB3 && plan){
     document.getElementById('bonus3orig').textContent='R$ '+fmt(plan.addonPrice);
   } else {
-    document.getElementById('bonus3orig').textContent=',';
+    document.getElementById('bonus3orig').textContent='—';
   }
 
   // Bônus no total geral (tier mais alto destravado)
