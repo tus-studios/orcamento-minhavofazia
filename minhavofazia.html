@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orçamento — Minha Vó Fazia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --brown-dark:#2C1A0E; --brown-mid:#5C3317; --brown-warm:#8B4513;
+    --caramel:#C47F2B; --gold:#D4A843; --cream:#FDF6EC; --cream-dark:#F5E6CC;
+    --text:#1A0F05; --text-light:#6B4226; --white:#FFFFFF; --green:#2C7A4B;
+  }
+  body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--text); }
+
+  .hero { background:var(--brown-dark); padding:60px 40px 50px; text-align:center; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 120%, #8B451340 0%, transparent 70%); }
+  .hero-eyebrow { font-size:11px; font-weight:500; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+  .hero h1 { font-family:'Playfair Display',serif; font-size:clamp(32px,6vw,52px); color:var(--cream); line-height:1.15; }
+  .hero h1 em { font-style:italic; color:var(--gold); }
+  .hero-sub { font-size:14px; color:#BFA082; margin-top:14px; font-weight:300; }
+  .hero-author { font-family:'Playfair Display',serif; font-style:italic; font-size:16px; color:var(--gold); margin-top:8px; letter-spacing:0.5px; opacity:0.85; }
+  .divider-gold { width:60px; height:2px; background:var(--gold); margin:20px auto; }
+
+  .container { max-width:860px; margin:0 auto; padding:40px 24px 80px; }
+
+  .block-label { display:flex; align-items:center; gap:10px; margin-bottom:16px; margin-top:8px; }
+  .block-num { width:28px; height:28px; border-radius:50%; background:var(--brown-dark); color:var(--gold); font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .block-title { font-family:'Playfair Display',serif; font-size:20px; color:var(--brown-dark); }
+
+  .card { background:var(--white); border:1px solid #E8D5B7; border-radius:16px; padding:28px; margin-bottom:16px; }
+  .card-header { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
+  .card-icon { width:44px; height:44px; background:var(--brown-dark); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .card-title { font-family:'Playfair Display',serif; font-size:18px; color:var(--brown-dark); }
+  .card-subtitle { font-size:12px; color:var(--text-light); margin-top:2px; }
+  .section-label { font-size:10px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--caramel); margin-bottom:8px; }
+
+  /* PHOTO COUNTER (novo) */
+  .photo-counter { display:flex; align-items:center; justify-content:space-between; padding:18px 20px; background:var(--cream); border:2px solid #E0CBB7; border-radius:12px; margin-bottom:16px; flex-wrap:wrap; gap:14px; }
+  .photo-counter.has-qty { border-color:var(--caramel); background:#FFF7EA; }
+  .photo-counter-left { flex:1; min-width:180px; }
+  .photo-counter-label { font-size:14px; font-weight:600; color:var(--text); margin-bottom:3px; }
+  .photo-counter-hint { font-size:12px; color:var(--text-light); }
+  .photo-counter-right { display:flex; align-items:center; gap:10px; }
+  .qbtn { width:34px; height:34px; border:1.5px solid #DFC9A0; border-radius:8px; background:var(--white); font-size:18px; font-weight:600; color:var(--brown-mid); cursor:pointer; transition:all 0.2s; display:flex; align-items:center; justify-content:center; }
+  .qbtn:hover { border-color:var(--caramel); }
+  .qinput { width:58px; height:34px; border:1.5px solid #DFC9A0; border-radius:8px; background:var(--white); font-size:16px; font-weight:700; color:var(--text); text-align:center; font-family:'DM Sans',sans-serif; outline:none; transition:all 0.2s; }
+  .qinput:focus { border-color:var(--caramel); }
+  .qinput::-webkit-outer-spin-button, .qinput::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+  .qinput { -moz-appearance:textfield; }
+
+  .subtotal-bar { display:flex; justify-content:space-between; align-items:center; padding:13px 16px; background:var(--brown-dark); border-radius:10px; color:var(--cream); font-size:14px; font-weight:500; }
+  .subtotal-val { font-family:'Playfair Display',serif; font-size:19px; color:var(--gold); }
+
+  .video-type-row { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+  .video-type-card { flex:1; min-width:180px; padding:16px; border:2px solid #E0CBB7; border-radius:12px; cursor:default; transition:all 0.2s; background:var(--cream); }
+  .video-type-card.has-qty { border-color:var(--caramel); background:#FFF7EA; }
+  .vtc-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; }
+  .vtc-name { font-size:14px; font-weight:600; color:var(--text); }
+  .vtc-price { font-size:14px; font-weight:700; color:var(--brown-warm); white-space:nowrap; }
+  .vtc-desc { font-size:12px; color:var(--text-light); line-height:1.5; margin-bottom:12px; }
+  .vtc-qty-row { display:flex; align-items:center; gap:8px; }
+  .qbtn-sm { width:30px; height:30px; border:1.5px solid #DFC9A0; border-radius:8px; background:var(--white); font-size:17px; font-weight:600; color:var(--brown-mid); cursor:pointer; transition:all 0.2s; display:flex; align-items:center; justify-content:center; }
+  .qbtn-sm:hover { border-color:var(--caramel); }
+  .qcount { font-size:16px; font-weight:700; color:var(--text); min-width:22px; text-align:center; }
+  .vtc-sub { font-size:12px; color:var(--text-light); margin-left:4px; }
+  .video-footer { display:flex; justify-content:space-between; align-items:center; padding:13px 16px; background:var(--brown-dark); border-radius:10px; color:var(--cream); font-size:14px; font-weight:500; margin-top:4px; }
+  .video-footer-val { font-family:'Playfair Display',serif; font-size:19px; color:var(--gold); }
+  .disc-tag { font-size:11px; color:#6FCF97; margin-left:6px; }
+
+  .design-options { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
+  .design-option { display:flex; align-items:flex-start; gap:14px; padding:16px; border:2px solid #E0CBB7; border-radius:12px; cursor:pointer; transition:all 0.2s; }
+  .design-option:hover { border-color:var(--caramel); }
+  .design-option.selected { border-color:var(--caramel); background:#FFF7EA; }
+  .radio { width:20px; height:20px; border:2px solid #C9AC80; border-radius:50%; flex-shrink:0; margin-top:2px; display:flex; align-items:center; justify-content:center; }
+  .radio::after { content:''; width:10px; height:10px; border-radius:50%; background:var(--caramel); opacity:0; transition:opacity 0.2s; }
+  .design-option.selected .radio { border-color:var(--caramel); }
+  .design-option.selected .radio::after { opacity:1; }
+  .design-option-body { flex:1; }
+  .design-option-name { font-size:14px; font-weight:600; color:var(--text); margin-bottom:3px; }
+  .design-option-desc { font-size:12px; color:var(--text-light); line-height:1.6; }
+  .design-option-price { font-size:15px; font-weight:700; color:var(--brown-warm); white-space:nowrap; margin-left:8px; }
+  .design-option-bonus { display:inline-block; margin-top:6px; padding:3px 8px; background:var(--gold); color:var(--brown-dark); font-size:10px; font-weight:700; border-radius:4px; letter-spacing:0.5px; text-transform:uppercase; }
+
+  /* CLEAR BUTTON (radio único) */
+  .clear-option-btn { background:none; border:none; color:var(--text-light); font-size:12px; cursor:pointer; text-decoration:underline; padding:4px 0; margin-top:4px; transition:color 0.2s; }
+  .clear-option-btn:hover { color:var(--brown-warm); }
+
+  .hl-toggle { display:flex; align-items:center; justify-content:space-between; padding:16px; border:2px solid #E0CBB7; border-radius:12px; cursor:pointer; transition:all 0.2s; background:var(--cream); }
+  .hl-toggle:hover { border-color:var(--caramel); }
+  .hl-toggle.selected { border-color:var(--caramel); background:#FFF7EA; }
+  .hl-toggle.included { border-color:var(--gold); background:#FFFBF0; cursor:default; }
+  .hl-toggle-left { display:flex; align-items:center; gap:12px; }
+  .checkbox { width:20px; height:20px; border:2px solid #C9AC80; border-radius:5px; display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--white); background:transparent; transition:all 0.2s; flex-shrink:0; }
+  .item-name { font-size:14px; font-weight:500; color:var(--text); }
+  .item-desc { font-size:12px; color:var(--text-light); }
+  .item-price { font-size:14px; font-weight:600; color:var(--brown-warm); white-space:nowrap; }
+  .included-badge { font-size:11px; font-weight:700; color:var(--green); letter-spacing:1px; text-transform:uppercase; }
+
+  .monthly-intro { background:var(--brown-dark); border-radius:16px; padding:22px 24px; margin-bottom:16px; position:relative; overflow:hidden; }
+  .monthly-intro::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 100% 0%, #C47F2B20 0%, transparent 60%); }
+  .monthly-intro-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; position:relative; }
+  .monthly-intro-title { font-family:'Playfair Display',serif; font-size:20px; color:var(--cream); margin-bottom:6px; position:relative; }
+  .monthly-intro-desc { font-size:13px; color:#BFA082; line-height:1.7; position:relative; }
+
+  .content-items { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
+  .content-item { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; background:var(--cream); border:1px solid #E0CBB7; border-radius:10px; }
+  .content-item-left { display:flex; align-items:center; gap:10px; }
+  .qty-controls { display:flex; align-items:center; gap:8px; }
+
+  .discount-notice { padding:14px 16px; border-radius:10px; font-size:13px; margin-bottom:16px; line-height:1.65; border:1.5px solid; }
+  .discount-notice.locked { background:#FFF7EA; border-color:#DFC9A0; color:var(--text-light); }
+  .discount-notice.almost { background:#FFF3E0; border-color:#F0A500; color:#7A4F00; }
+  .discount-notice.unlocked { background:#F0FFF6; border-color:#6FCF97; color:#1A5C35; }
+
+  .monthly-footer { background:var(--brown-dark); border-radius:12px; padding:18px 20px; }
+
+  /* Seletor de duração */
+  .duration-picker { background:var(--cream); border:1.5px solid #E0CBB7; border-radius:12px; padding:16px 18px; margin-bottom:16px; }
+  .duration-label { font-size:13px; font-weight:600; color:var(--text); margin-bottom:10px; }
+  .duration-hint { font-size:12px; color:var(--text-light); margin-bottom:12px; line-height:1.5; }
+  .duration-options { display:flex; gap:8px; flex-wrap:wrap; }
+  .duration-opt { flex:1; min-width:80px; padding:12px 8px; border:1.5px solid #DFC9A0; border-radius:8px; background:var(--white); font-size:14px; font-weight:600; color:var(--brown-mid); cursor:pointer; transition:all 0.2s; text-align:center; font-family:'DM Sans',sans-serif; }
+  .duration-opt:hover { border-color:var(--caramel); }
+  .duration-opt.active { border-color:var(--caramel); background:var(--caramel); color:var(--white); }
+  .duration-opt-sub { display:block; font-size:10px; font-weight:400; opacity:0.8; margin-top:2px; text-transform:uppercase; letter-spacing:0.5px; }
+  .mf-row { display:flex; justify-content:space-between; font-size:13px; color:#BFA082; padding:3px 0; }
+  .mf-row.hl { color:var(--cream); font-weight:500; }
+  .mf-row.disc { color:#6FCF97; }
+  .mf-divider { height:1px; background:#4A2810; margin:8px 0; }
+  .mf-total { display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid #4A2810; margin-top:6px; }
+  .mf-total-label { font-family:'Playfair Display',serif; font-size:15px; color:var(--cream); }
+  .mf-total-val { font-family:'Playfair Display',serif; font-size:26px; color:var(--gold); }
+  .mf-note { font-size:11px; color:#7A5A40; margin-top:4px; }
+
+  .notes-box { background:#FFF7EA; border-left:3px solid var(--caramel); border-radius:0 10px 10px 0; padding:14px 16px; margin-top:16px; font-size:13px; color:var(--text-light); line-height:1.7; }
+  .notes-box strong { color:var(--brown-dark); }
+
+  .bonus-card { border-radius:16px; padding:24px; margin-bottom:16px; border:2px dashed var(--gold); background:#FFFBF0; position:relative; overflow:hidden; }
+  .bonus-card::before { content:'🎁'; position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:52px; opacity:0.1; }
+  .bonus-card-title { font-family:'Playfair Display',serif; font-size:18px; color:var(--brown-dark); margin-bottom:6px; }
+  .bonus-card-sub { font-size:13px; color:var(--text-light); margin-bottom:16px; line-height:1.6; }
+  .bonus-tiers { display:flex; flex-direction:column; gap:10px; }
+  .bonus-tier { display:flex; align-items:flex-start; gap:12px; padding:14px; background:var(--white); border-radius:10px; border:1px solid #E8D5B7; opacity:0.4; transition:all 0.3s; }
+  .bonus-tier.unlocked { opacity:1; border-color:var(--gold); }
+  .bonus-tier-icon { font-size:20px; flex-shrink:0; }
+  .bonus-tier-body { flex:1; }
+  .bonus-tier-name { font-size:13px; font-weight:600; color:var(--text); }
+  .bonus-tier-desc { font-size:12px; color:var(--text-light); margin-top:2px; }
+  .bonus-tier-val { text-align:right; white-space:nowrap; }
+  .bonus-tier-val .orig { text-decoration:line-through; color:#B09070; font-size:11px; display:block; }
+  .bonus-tier-val .free { color:var(--green); font-weight:700; font-size:13px; }
+
+  /* GRAND TOTAL */
+  .grand-total-card { background:var(--brown-dark); border-radius:20px; padding:32px 28px; margin-top:8px; position:relative; overflow:hidden; }
+  .grand-total-card::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 100% 0%, #C47F2B20 0%, transparent 60%); pointer-events:none; }
+  .gt-rows { display:flex; flex-direction:column; gap:7px; margin-bottom:12px; }
+  .gt-row { display:flex; justify-content:space-between; font-size:14px; color:#BFA082; }
+  .gt-row.disc { color:#6FCF97; font-size:13px; }
+  .gt-divider { height:1px; background:#4A2810; margin:6px 0; }
+  .gt-bonus { display:flex; justify-content:space-between; font-size:13px; color:#6FCF97; padding-bottom:10px; border-bottom:1px dashed #4A2810; margin-bottom:10px; }
+  .gt-final { display:flex; justify-content:space-between; align-items:flex-end; }
+  .gt-final-label { font-family:'Playfair Display',serif; font-size:22px; color:var(--cream); }
+  .gt-final-val { font-family:'Playfair Display',serif; font-size:36px; color:var(--gold); line-height:1; }
+  .gt-note { font-size:11px; color:#7A5A40; margin-top:4px; text-align:right; }
+
+  /* PAYMENT SCHEDULE */
+  .schedule-card { background:var(--white); border:1px solid #E8D5B7; border-radius:16px; overflow:hidden; margin-top:16px; }
+  .schedule-header { background:var(--brown-dark); padding:18px 24px; }
+  .schedule-header-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+  .schedule-header-title { font-family:'Playfair Display',serif; font-size:18px; color:var(--cream); }
+  .schedule-table { width:100%; border-collapse:collapse; }
+  .schedule-table th { background:var(--cream-dark); padding:10px 16px; font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--text-light); text-align:left; border-bottom:1px solid #E8D5B7; }
+  .schedule-table th:last-child { text-align:right; }
+  .schedule-table td { padding:13px 16px; font-size:13px; color:var(--text); border-bottom:1px solid #F0E4CE; vertical-align:top; }
+  .schedule-table td:last-child { text-align:right; font-weight:700; color:var(--brown-warm); white-space:nowrap; }
+  .schedule-table tr:last-child td { border-bottom:none; }
+  .schedule-table tr.month-header td { background:var(--cream); font-weight:700; color:var(--brown-dark); font-size:13px; border-bottom:1px solid #E8D5B7; }
+  .schedule-table tr.month-header td:first-child { font-family:'Playfair Display',serif; font-size:15px; }
+  .schedule-table tr.total-row td { background:var(--brown-dark); color:var(--cream); font-weight:600; font-size:13px; border-bottom:none; }
+  .schedule-table tr.total-row td:last-child { font-family:'Playfair Display',serif; font-size:18px; color:var(--gold); }
+  .schedule-table tr.bonus-row td { color:var(--green); font-size:12px; font-style:italic; }
+  .schedule-table tr.bonus-row td:last-child { color:var(--green); font-weight:600; }
+  .schedule-empty { padding:32px; text-align:center; font-size:13px; color:var(--text-light); font-style:italic; }
+
+  footer { text-align:center; padding:20px; font-size:11px; color:#B09070; letter-spacing:1px; text-transform:uppercase; }
+
+  @media(max-width:480px){
+    .hero { padding:40px 20px 36px; }
+    .container { padding:24px 16px 60px; }
+    .gt-final-val { font-size:28px; }
+    .video-type-row { flex-direction:column; }
+    .schedule-table td, .schedule-table th { padding:10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">Proposta Comercial</div>
+  <h1><em>Minha Vó Fazia</em></h1>
+  <div class="hero-author">por Artur Gomes</div>
+  <div class="divider-gold"></div>
+  <div class="hero-sub">Identidade Visual · Estratégia de Marca · Cardápio · Produção de Conteúdo</div>
+</div>
+
+<div class="container">
+
+  <!-- BLOCO 1 -->
+  <div class="block-label">
+    <div class="block-num">1</div>
+    <div class="block-title">Projeto Base</div>
+  </div>
+
+  <!-- IDENTIDADE VISUAL -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🎨</div>
+      <div>
+        <div class="card-title">Identidade Visual</div>
+        <div class="card-subtitle">Construção da marca — escolha um plano</div>
+      </div>
+    </div>
+    <div class="design-options" id="brandOptions"></div>
+    <button class="clear-option-btn" id="brandClear" onclick="clearBrand()" style="display:none;">✕ Remover seleção de identidade</button>
+    <div class="notes-box"><strong>Incluso em ambos os planos:</strong> até 2 rodadas de ajuste e entrega em todos os formatos necessários (PNG, JPG, PDF, vetor).</div>
+  </div>
+
+  <!-- ESTRATÉGIA DE MARCA -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🧭</div>
+      <div>
+        <div class="card-title">Estratégia de Marca</div>
+        <div class="card-subtitle">Add-on opcional — direção para toda a comunicação</div>
+      </div>
+    </div>
+    <div class="hl-toggle" id="stratToggle" onclick="toggleStrat()">
+      <div class="hl-toggle-left">
+        <div class="checkbox" id="stratCheck">✓</div>
+        <div>
+          <div class="item-name">Auditoria + Repaginação Estratégica</div>
+          <div class="item-desc">Análise da marca atual, definição de posicionamento, território e direção visual</div>
+        </div>
+      </div>
+      <div class="item-price">R$ 700</div>
+    </div>
+    <div class="notes-box"><strong>Por que contratar:</strong> a estratégia é o que dá direção pra identidade visual fazer sentido. Sem ela, o visual vira achismo bonito — com ela, cada decisão de marca tem propósito.</div>
+  </div>
+
+  <!-- CARDÁPIO -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">📖</div>
+      <div>
+        <div class="card-title">Design do Cardápio</div>
+        <div class="card-subtitle">Cardápio aplicado à identidade da marca</div>
+      </div>
+    </div>
+    <div class="design-options" id="menuOptions"></div>
+    <button class="clear-option-btn" id="menuClear" onclick="clearMenu()" style="display:none;">✕ Remover seleção de cardápio</button>
+    <div class="notes-box"><strong>Incluso em ambos os planos:</strong> até 2 rodadas de ajuste, PDF para impressão e versão digital (PNG/JPG).</div>
+  </div>
+
+  <!-- FOTOGRAFIA -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">📸</div>
+      <div>
+        <div class="card-title">Fotografia de Produto</div>
+        <div class="card-subtitle">R$ 50 por produto · 2 fotos editadas por item</div>
+      </div>
+    </div>
+    <div class="section-label">Quantos produtos você quer fotografar?</div>
+    <div class="photo-counter" id="photoCounter">
+      <div class="photo-counter-left">
+        <div class="photo-counter-label">Produtos para fotografar</div>
+        <div class="photo-counter-hint">Use os botões ou digite a quantidade</div>
+      </div>
+      <div class="photo-counter-right">
+        <button class="qbtn" onclick="chgPhoto(-1)">−</button>
+        <input type="number" class="qinput" id="photoInput" value="0" min="0" max="999" onchange="setPhoto(this.value)" oninput="setPhoto(this.value)">
+        <button class="qbtn" onclick="chgPhoto(1)">+</button>
+      </div>
+    </div>
+    <div class="subtotal-bar">
+      <span>Subtotal (<span id="photoCount">0</span> produto<span id="photoPlural"></span>)</span>
+      <span class="subtotal-val" id="photoTotal">R$ 0</span>
+    </div>
+  </div>
+
+  <!-- VÍDEOS -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🎬</div>
+      <div>
+        <div class="card-title">Vídeos</div>
+        <div class="card-subtitle">Produzidos no mês de entrega do projeto</div>
+      </div>
+    </div>
+    <div class="section-label" style="margin-bottom:12px;">Escolha a quantidade</div>
+    <div class="video-type-row" id="videoTypeRow"></div>
+    <div class="video-footer">
+      <span>Subtotal Vídeos</span>
+      <span class="video-footer-val" id="videoTotal">R$ 0</span>
+    </div>
+  </div>
+
+  <!-- DESTAQUES -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">✨</div>
+      <div>
+        <div class="card-title">Capas para Destaques</div>
+        <div class="card-subtitle">Capas alinhadas à nova identidade visual da marca</div>
+      </div>
+    </div>
+    <div class="hl-toggle" id="hlToggle" onclick="toggleHL()">
+      <div class="hl-toggle-left">
+        <div class="checkbox" id="hlCheck">✓</div>
+        <div>
+          <div class="item-name" id="hlName">Capas para Destaques</div>
+          <div class="item-desc" id="hlDesc">Capas alinhadas à nova identidade visual da marca</div>
+        </div>
+      </div>
+      <div class="item-price" id="hlPrice">R$ 100</div>
+    </div>
+  </div>
+
+  <!-- BLOCO 2 -->
+  <div class="block-label" style="margin-top:24px;">
+    <div class="block-num">2</div>
+    <div class="block-title">Prestação Mensal <span style="font-size:13px;font-weight:400;color:var(--text-light);font-family:'DM Sans',sans-serif;">— monte como quiser</span></div>
+  </div>
+
+  <div class="monthly-intro">
+    <div class="monthly-intro-label">Conteúdo contínuo</div>
+    <div class="monthly-intro-title">Posts, Carrosseis e Vídeos mensais</div>
+    <div class="monthly-intro-desc">
+      Escolha a duração e monte a composição que faz sentido pra você.
+      <strong style="color:var(--gold);">10% de desconto</strong> ao fechar 3 meses com pelo menos 2 posts + 2 carrosseis + 4 vídeos por mês.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">📋</div>
+      <div>
+        <div class="card-title">Monte seu pacote mensal</div>
+        <div class="card-subtitle">Foto + design + copy inclusos em posts e carrosseis</div>
+      </div>
+    </div>
+
+    <div class="duration-picker">
+      <div class="duration-label">Por quantos meses?</div>
+      <div class="duration-hint">A composição definida abaixo se repete em cada mês contratado.</div>
+      <div class="duration-options" id="durationOptions">
+        <button class="duration-opt" data-months="1" onclick="setDuration(1)">1 mês</button>
+        <button class="duration-opt" data-months="2" onclick="setDuration(2)">2 meses</button>
+        <button class="duration-opt" data-months="3" onclick="setDuration(3)">3 meses <span class="duration-opt-sub">elegível pro desconto</span></button>
+      </div>
+    </div>
+
+    <div class="content-items" id="contentItems"></div>
+    <div class="discount-notice locked" id="discNotice">
+      <strong>🔒 Desconto de 10% disponível</strong> ao fechar 3 meses com pelo menos 2 posts, 2 carrosseis e 4 vídeos por mês.<br>
+      <span style="font-size:12px;">Tem uma necessidade diferente? O pacote é <strong>flexível</strong> — desconto <strong>negociável</strong> conforme sua demanda.</span>
+    </div>
+    <div class="monthly-footer">
+      <div class="mf-row"><span>Valor cheio mensal</span><span id="mfGross">—</span></div>
+      <div class="mf-row disc" id="mfDiscRow" style="display:none;"><span>Desconto 10%</span><span id="mfDisc">—</span></div>
+      <div class="mf-divider"></div>
+      <div class="mf-row hl"><span>Valor mensal</span><span id="mfMonthly">—</span></div>
+      <div class="mf-total">
+        <div>
+          <div class="mf-total-label" id="mfTotalLabel">Total</div>
+          <div class="mf-note" id="mfNote">Selecione os itens acima</div>
+        </div>
+        <div class="mf-total-val" id="mfTotal">R$ —</div>
+      </div>
+    </div>
+    <div class="notes-box">
+      <strong>Captação in loco:</strong> R$ 50 por visita à loja, quando necessário.
+    </div>
+  </div>
+
+  <!-- BÔNUS -->
+  <div class="block-label" style="margin-top:24px;">
+    <div class="block-num">🎁</div>
+    <div class="block-title">Bônus por Fidelização</div>
+  </div>
+
+  <div class="bonus-card">
+    <div class="bonus-card-title">Conteúdo extra, sem custo adicional</div>
+    <div class="bonus-card-sub">Quanto mais você fechar, mais você ganha. Os bônus desbloqueiam conforme os itens selecionados.</div>
+    <div class="bonus-tiers">
+      <div class="bonus-tier" id="bonus1">
+        <div class="bonus-tier-icon">🎁</div>
+        <div class="bonus-tier-body">
+          <div class="bonus-tier-name">Ao fechar Projeto Base (identidade + cardápio + fotos)</div>
+          <div class="bonus-tier-desc">1 carrossel · foto + design + copy inclusos</div>
+        </div>
+        <div class="bonus-tier-val"><span class="orig">R$ 150</span><span class="free">GRÁTIS</span></div>
+      </div>
+      <div class="bonus-tier" id="bonus2">
+        <div class="bonus-tier-icon">🎁🎁</div>
+        <div class="bonus-tier-body">
+          <div class="bonus-tier-name">Ao fechar Projeto Base + Estratégia de Marca</div>
+          <div class="bonus-tier-desc">1 carrossel + 1 post simples · foto + design + copy inclusos</div>
+        </div>
+        <div class="bonus-tier-val"><span class="orig">R$ 210</span><span class="free">GRÁTIS</span></div>
+      </div>
+      <div class="bonus-tier" id="bonus3">
+        <div class="bonus-tier-icon">🎁🎁🎁</div>
+        <div class="bonus-tier-body">
+          <div class="bonus-tier-name">Ao fechar Projeto Base + Prestação Mensal de 3 meses (2 posts · 2 carrosseis · 4 vídeos)</div>
+          <div class="bonus-tier-desc">10% off em todos os itens do pacote mensal + 10% off nas fotos do Projeto Base</div>
+        </div>
+        <div class="bonus-tier-val"><span class="orig" id="bonus3orig">—</span><span class="free">10% OFF</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOTAL GERAL -->
+  <div class="grand-total-card">
+    <div class="gt-rows">
+      <div class="gt-row"><span>Fotografia</span><span id="gtFoto">—</span></div>
+      <div class="gt-row disc" id="gtFotoDiscRow" style="display:none;"><span>↳ Desconto 10% fotos</span><span id="gtFotoDisc">—</span></div>
+      <div class="gt-row"><span>Vídeos (Projeto Base)</span><span id="gtVideo">—</span></div>
+      <div class="gt-row"><span>Identidade Visual</span><span id="gtBrand">—</span></div>
+      <div class="gt-row"><span>Estratégia de Marca</span><span id="gtStrat">—</span></div>
+      <div class="gt-row"><span>Design do Cardápio</span><span id="gtMenu">—</span></div>
+      <div class="gt-row"><span>Capas para Destaques</span><span id="gtHL">—</span></div>
+      <div class="gt-divider"></div>
+      <div class="gt-row"><span id="gtMonthlyLabel">Prestação Mensal</span><span id="gtMonthly">—</span></div>
+      <div class="gt-row disc" id="gtMonthlyDiscRow" style="display:none;"><span>↳ Desconto 10% mensal</span><span id="gtMonthlyDisc">—</span></div>
+    </div>
+    <div class="gt-bonus" id="gtBonus" style="display:none;">
+      <span id="gtBonusText">🎁 Bônus incluído</span>
+      <span id="gtBonusVal">—</span>
+    </div>
+    <div class="gt-final">
+      <div>
+        <div class="gt-final-label" id="gtLabel">Total Geral</div>
+        <div class="gt-note" id="gtNote">Selecione os itens acima</div>
+      </div>
+      <div class="gt-final-val" id="gtTotal">R$ —</div>
+    </div>
+  </div>
+
+  <!-- CRONOGRAMA DE PAGAMENTOS -->
+  <div class="schedule-card" id="scheduleCard">
+    <div class="schedule-header">
+      <div class="schedule-header-label">Resumo financeiro</div>
+      <div class="schedule-header-title">Quanto pagar por mês</div>
+    </div>
+    <div id="scheduleBody">
+      <div class="schedule-empty">Selecione os itens acima para ver o cronograma de pagamentos.</div>
+    </div>
+  </div>
+
+</div>
+<footer>Orçamento válido por 15 dias · Sujeito a ajustes após briefing detalhado</footer>
+
+<script>
+const PRICE_PHOTO = 50;
+const PRICE_HL = 100;
+const PRICE_STRAT = 700;
+const DISC_RATE = 0.10;
+const MIN_POST = 2, MIN_CARR = 2, MIN_VID = 4;
+
+const brandPlans = [
+  { id:'basica',   name:'Identidade Visual Básica',   desc:'Logo principal, símbolo, paleta de cores e tipografia. O essencial para uma marca consistente.', price:500 },
+  { id:'completa', name:'Identidade Visual Completa', desc:'Tudo da básica + logos secundárias, ícones, mockups, elementos gráficos e manual de marca.', price:800, bonusHL:true },
+];
+const menuPlans = [
+  { id:'simples',  name:'Cardápio Simples',  desc:'Cardápio digital de página única, com organização clara dos produtos e valores. Perfeito para uso no WhatsApp e redes sociais.', price:180 },
+  { id:'completo', name:'Cardápio Completo', desc:'Cardápio digital com capa e múltiplas páginas, incluindo descrição dos produtos. Pensado para valorizar a marca e melhorar a experiência do cliente.', price:350 },
+];
+const videoTypes = [
+  { id:'vlongo', name:'Vídeo Completo', desc:'Até 1min · múltiplos produtos · com narração', price:250 },
+];
+const monthlyDefs = [
+  { id:'post',      name:'Post Simples',   desc:'Foto + design + copy',                unitPrice:60,  min:MIN_POST },
+  { id:'carrossel', name:'Carrossel',       desc:'Até 6 slides · foto + design + copy', unitPrice:150, min:MIN_CARR },
+  { id:'mvlongo',   name:'Vídeo Completo', desc:'Até 1min · com narração',             unitPrice:250, min:MIN_VID },
+];
+
+let photoQty = 0;
+let vQtys = { vlongo:0 };
+let selBrand = null;
+let selMenu = null;
+let stratSel = false;
+let hlSel = false;
+let mQtys = { post:0, carrossel:0, mvlongo:0 };
+let mDuration = 0; // 0 = nenhuma escolha; 1, 2 ou 3 meses
+
+function fmt(v){ return v.toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0}); }
+function R(v){ return v>0?'R$ '+fmt(v):'—'; }
+
+// PHOTO COUNTER
+function chgPhoto(delta){ setPhoto(photoQty+delta); }
+function setPhoto(v){
+  let n=parseInt(v,10); if(isNaN(n)||n<0) n=0; if(n>999) n=999;
+  photoQty=n;
+  document.getElementById('photoInput').value=n;
+  document.getElementById('photoCounter').classList.toggle('has-qty',n>0);
+  update();
+}
+
+// VIDEOS
+const videoRow = document.getElementById('videoTypeRow');
+videoTypes.forEach(v=>{
+  const el=document.createElement('div');
+  el.className='video-type-card';
+  el.id='vtc-'+v.id;
+  el.innerHTML=`
+    <div class="vtc-header"><div class="vtc-name">${v.name}</div><div class="vtc-price">R$ ${v.price}</div></div>
+    <div class="vtc-desc">${v.desc}</div>
+    <div class="vtc-qty-row">
+      <button class="qbtn-sm" onclick="chgV('${v.id}',-1)">−</button>
+      <div class="qcount" id="vq-${v.id}">0</div>
+      <button class="qbtn-sm" onclick="chgV('${v.id}',1)">+</button>
+      <span class="vtc-sub" id="vs-${v.id}">R$ 0</span>
+    </div>`;
+  videoRow.appendChild(el);
+});
+function chgV(id,delta){
+  vQtys[id]=Math.max(0,vQtys[id]+delta);
+  document.getElementById('vq-'+id).textContent=vQtys[id];
+  const v=videoTypes.find(x=>x.id===id);
+  document.getElementById('vs-'+id).textContent='R$ '+fmt(vQtys[id]*v.price);
+  document.getElementById('vtc-'+id).classList.toggle('has-qty',vQtys[id]>0);
+  update();
+}
+
+// BRAND
+const brandContainer=document.getElementById('brandOptions');
+brandPlans.forEach(d=>{
+  const el=document.createElement('div');
+  el.className='design-option';
+  el.id='brand-'+d.id;
+  el.innerHTML=`<div class="radio"></div><div class="design-option-body"><div class="design-option-name">${d.name}</div><div class="design-option-desc">${d.desc}</div>${d.bonusHL?'<span class="design-option-bonus">🎁 Inclui Capas para Destaques grátis</span>':''}</div><div class="design-option-price">R$ ${d.price}</div>`;
+  el.addEventListener('click',()=>{
+    selBrand=d.id;
+    document.querySelectorAll('#brandOptions .design-option').forEach(x=>x.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('brandClear').style.display='inline-block';
+    update();
+  });
+  brandContainer.appendChild(el);
+});
+function clearBrand(){
+  selBrand=null;
+  document.querySelectorAll('#brandOptions .design-option').forEach(x=>x.classList.remove('selected'));
+  document.getElementById('brandClear').style.display='none';
+  update();
+}
+
+// MENU
+const menuContainer=document.getElementById('menuOptions');
+menuPlans.forEach(d=>{
+  const el=document.createElement('div');
+  el.className='design-option';
+  el.id='menu-'+d.id;
+  el.innerHTML=`<div class="radio"></div><div class="design-option-body"><div class="design-option-name">${d.name}</div><div class="design-option-desc">${d.desc}</div></div><div class="design-option-price">R$ ${d.price}</div>`;
+  el.addEventListener('click',()=>{
+    selMenu=d.id;
+    document.querySelectorAll('#menuOptions .design-option').forEach(x=>x.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('menuClear').style.display='inline-block';
+    update();
+  });
+  menuContainer.appendChild(el);
+});
+function clearMenu(){
+  selMenu=null;
+  document.querySelectorAll('#menuOptions .design-option').forEach(x=>x.classList.remove('selected'));
+  document.getElementById('menuClear').style.display='none';
+  update();
+}
+
+// STRATEGY
+function toggleStrat(){
+  stratSel=!stratSel;
+  document.getElementById('stratToggle').classList.toggle('selected',stratSel);
+  const c=document.getElementById('stratCheck');
+  c.style.background=stratSel?'var(--caramel)':'transparent';
+  c.style.borderColor=stratSel?'var(--caramel)':'#C9AC80';
+  update();
+}
+
+// HIGHLIGHTS
+function toggleHL(){
+  // Se identidade completa estiver selecionada, destaques estão inclusos — não toggle manual
+  const brand=brandPlans.find(b=>b.id===selBrand);
+  if(brand && brand.bonusHL) return;
+  hlSel=!hlSel;
+  applyHLVisual();
+  update();
+}
+function applyHLVisual(){
+  const tog=document.getElementById('hlToggle');
+  const brand=brandPlans.find(b=>b.id===selBrand);
+  const included=brand && brand.bonusHL;
+  const c=document.getElementById('hlCheck');
+  tog.classList.remove('selected','included');
+  if(included){
+    tog.classList.add('included');
+    c.style.background='var(--green)';
+    c.style.borderColor='var(--green)';
+    document.getElementById('hlPrice').innerHTML='<span class="included-badge">✓ Incluso</span>';
+    document.getElementById('hlDesc').textContent='Brinde da Identidade Visual Completa — capas alinhadas à sua nova marca';
+  } else {
+    document.getElementById('hlPrice').textContent='R$ '+PRICE_HL;
+    document.getElementById('hlDesc').textContent='Capas alinhadas à nova identidade visual da marca';
+    if(hlSel){
+      tog.classList.add('selected');
+      c.style.background='var(--caramel)';
+      c.style.borderColor='var(--caramel)';
+    } else {
+      c.style.background='transparent';
+      c.style.borderColor='#C9AC80';
+    }
+  }
+}
+
+// MONTHLY
+const contentContainer=document.getElementById('contentItems');
+monthlyDefs.forEach(item=>{
+  const el=document.createElement('div');
+  el.className='content-item';
+  el.innerHTML=`
+    <div class="content-item-left">
+      <div class="qty-controls">
+        <button class="qbtn-sm" onclick="chgM('${item.id}',-1)">−</button>
+        <div class="qcount" id="mc-${item.id}">0</div>
+        <button class="qbtn-sm" onclick="chgM('${item.id}',1)">+</button>
+      </div>
+      <div>
+        <div class="item-name">${item.name}</div>
+        <div class="item-desc">${item.desc} · R$ ${item.unitPrice}/unid.</div>
+      </div>
+    </div>
+    <div class="item-price" id="ms-${item.id}">R$ 0</div>`;
+  contentContainer.appendChild(el);
+});
+function chgM(id,delta){
+  mQtys[id]=Math.max(0,mQtys[id]+delta);
+  document.getElementById('mc-'+id).textContent=mQtys[id];
+  const item=monthlyDefs.find(i=>i.id===id);
+  document.getElementById('ms-'+id).textContent='R$ '+fmt(mQtys[id]*item.unitPrice);
+  update();
+}
+
+function setDuration(n){
+  mDuration = (mDuration === n) ? 0 : n; // clicar de novo desmarca
+  document.querySelectorAll('.duration-opt').forEach(b=>{
+    b.classList.toggle('active', parseInt(b.dataset.months,10) === mDuration);
+  });
+  update();
+}
+
+function buildSchedule(m0Total, m0Breakdown, photoDiscVal, mNet, mBreakdown, hasMonthly, discApplied, bonusText, bonusVal, duration) {
+  const body = document.getElementById('scheduleBody');
+  if(m0Total===0 && !hasMonthly){ body.innerHTML='<div class="schedule-empty">Selecione os itens acima para ver o cronograma de pagamentos.</div>'; return; }
+
+  let html = `<table class="schedule-table">
+    <thead><tr><th>Mês</th><th>O que inclui</th><th>Valor</th></tr></thead><tbody>`;
+
+  // MÊS 0
+  html += `<tr class="month-header"><td>Mês 0</td><td>Entrega do Projeto Base</td><td></td></tr>`;
+  m0Breakdown.forEach(row=>{
+    html += `<tr><td></td><td>${row.label}</td><td>${row.val}</td></tr>`;
+  });
+  if(discApplied && photoDiscVal > 0){
+    html += `<tr><td></td><td style="color:var(--green);">↳ Desconto 10% nas fotos</td><td style="color:var(--green);">− R$ ${fmt(photoDiscVal)}</td></tr>`;
+  }
+  if(bonusText){
+    html += `<tr class="bonus-row"><td></td><td>🎁 ${bonusText}</td><td>R$ ${fmt(bonusVal)} grátis</td></tr>`;
+  }
+  if(m0Total > 0){
+    html += `<tr class="total-row"><td></td><td>Total Mês 0</td><td>R$ ${fmt(m0Total - (discApplied?photoDiscVal:0))}</td></tr>`;
+  }
+
+  // MESES de prestação mensal (1 até duration)
+  if(hasMonthly && duration > 0){
+    for(let n=1; n<=duration; n++){
+      html += `<tr class="month-header"><td>Mês ${n}</td><td>Prestação Mensal</td><td></td></tr>`;
+      mBreakdown.forEach(row=>{
+        html += `<tr><td></td><td>${row.label}</td><td>${row.val}</td></tr>`;
+      });
+      if(discApplied){
+        html += `<tr><td></td><td style="color:var(--green);">↳ Desconto 10%</td><td style="color:var(--green);">− R$ ${fmt(mBreakdown.reduce((a,r)=>a+r.raw,0)*DISC_RATE)}</td></tr>`;
+      }
+      html += `<tr class="total-row"><td></td><td>Total Mês ${n}</td><td>R$ ${fmt(mNet)}</td></tr>`;
+    }
+  }
+
+  html += `</tbody></table>`;
+  body.innerHTML = html;
+}
+
+function update(){
+  // Aplicar visual dos destaques (depende da seleção de identidade)
+  applyHLVisual();
+
+  const photoGross = photoQty*PRICE_PHOTO;
+  document.getElementById('photoCount').textContent=photoQty;
+  document.getElementById('photoPlural').textContent=photoQty!==1?'s':'';
+
+  let videoGross=0;
+  videoTypes.forEach(v=>{ videoGross+=vQtys[v.id]*v.price; });
+
+  const brand=brandPlans.find(b=>b.id===selBrand);
+  const brandVal=brand?brand.price:0;
+  const menu=menuPlans.find(d=>d.id===selMenu);
+  const menuVal=menu?menu.price:0;
+  const stratVal=stratSel?PRICE_STRAT:0;
+
+  // HL: incluso na identidade completa OU selecionado manualmente
+  const hlIncluded = brand && brand.bonusHL;
+  const hlActive = hlIncluded || hlSel;
+  const hlVal = (hlActive && !hlIncluded) ? PRICE_HL : 0; // só cobra se não estiver incluso
+
+  let monthlyGross=0;
+  monthlyDefs.forEach(i=>{ monthlyGross+=mQtys[i.id]*i.unitPrice; });
+  const hasItems = monthlyGross>0;
+  const hasDuration = mDuration>0;
+  const hasMonthly = hasItems && hasDuration; // só conta como mensal contratado quando tem itens E duração
+  const allMin = mQtys.post>=MIN_POST && mQtys.carrossel>=MIN_CARR && mQtys.mvlongo>=MIN_VID;
+  const discApplied = allMin && hasItems && mDuration===3;
+  const monthlyNet = discApplied ? monthlyGross*(1-DISC_RATE) : monthlyGross;
+  const monthlyTotalPeriod = monthlyNet * mDuration; // total considerando a duração escolhida
+
+  // Desconto de 10% nas fotos quando bônus tier 3 desbloqueado
+  const photoDiscount = discApplied ? photoGross*DISC_RATE : 0;
+  const photoNet = photoGross - photoDiscount;
+
+  document.getElementById('photoTotal').textContent='R$ '+fmt(photoGross);
+
+  document.getElementById('videoTotal').textContent=R(videoGross);
+
+  // Monthly notice — três cenários: nada, falta algo, tudo certo
+  const notice=document.getElementById('discNotice');
+  const mfDiscRow=document.getElementById('mfDiscRow');
+  if(discApplied){
+    notice.className='discount-notice unlocked';
+    notice.innerHTML='<strong>✅ Desconto de 10% aplicado!</strong> 3 meses + composição mínima selecionados.<br><span style="font-size:12px;">Tem uma necessidade diferente? O pacote é <strong>flexível</strong> — desconto <strong>negociável</strong> conforme sua demanda.</span>';
+    mfDiscRow.style.display='flex';
+    document.getElementById('mfDisc').textContent='− R$ '+fmt(monthlyGross*DISC_RATE);
+  } else if(hasItems || hasDuration){
+    // Está montando — mostrar o que falta pro desconto
+    const missing=[];
+    if(mDuration!==3) missing.push(mDuration===0 ? 'escolher 3 meses' : 'fechar 3 meses');
+    if(mQtys.post<MIN_POST) missing.push(`${MIN_POST-mQtys.post} post${MIN_POST-mQtys.post!==1?'s':''}`);
+    if(mQtys.carrossel<MIN_CARR) missing.push(`${MIN_CARR-mQtys.carrossel} carrossel${MIN_CARR-mQtys.carrossel!==1?'/eis':''}`);
+    if(mQtys.mvlongo<MIN_VID) missing.push(`${MIN_VID-mQtys.mvlongo} vídeo${MIN_VID-mQtys.mvlongo!==1?'s':''}`);
+    notice.className='discount-notice almost';
+    notice.innerHTML=`<strong>⚡ Quase lá!</strong> Falta: <strong>${missing.join(', ')}</strong> para destravar 10% off.<br><span style="font-size:12px;">Tem uma necessidade diferente? O pacote é <strong>flexível</strong> — desconto <strong>negociável</strong> conforme sua demanda.</span>`;
+    mfDiscRow.style.display='none';
+  } else {
+    notice.className='discount-notice locked';
+    notice.innerHTML='<strong>🔒 Desconto de 10% disponível</strong> ao fechar 3 meses com pelo menos 2 posts, 2 carrosseis e 4 vídeos por mês.<br><span style="font-size:12px;">Tem uma necessidade diferente? O pacote é <strong>flexível</strong> — desconto <strong>negociável</strong> conforme sua demanda.</span>';
+    mfDiscRow.style.display='none';
+  }
+  document.getElementById('mfGross').textContent=R(monthlyGross);
+  document.getElementById('mfMonthly').textContent=R(monthlyNet);
+
+  // Label e valor do total do período mensal
+  const mfTotalLabel = document.getElementById('mfTotalLabel');
+  if(hasMonthly){
+    mfTotalLabel.textContent = mDuration===1 ? 'Total (1 mês)' : `Total ${mDuration} meses`;
+    document.getElementById('mfTotal').textContent='R$ '+fmt(monthlyTotalPeriod);
+  } else {
+    mfTotalLabel.textContent = 'Total';
+    document.getElementById('mfTotal').textContent='R$ —';
+  }
+
+  if(hasItems){
+    const parts=monthlyDefs.filter(i=>mQtys[i.id]>0).map(i=>`${mQtys[i.id]}× ${i.name}`);
+    const suffix = hasDuration ? ' · por mês' : ' · por mês (escolha a duração)';
+    document.getElementById('mfNote').textContent=parts.join(' · ')+suffix;
+  } else if(hasDuration) {
+    document.getElementById('mfNote').textContent=`${mDuration} ${mDuration===1?'mês':'meses'} selecionado${mDuration===1?'':'s'} · adicione itens`;
+  } else {
+    document.getElementById('mfNote').textContent='Selecione os itens acima';
+  }
+
+  // Bonus
+  // Projeto Base = identidade + cardápio + fotos
+  const hasProjBase = !!brand && !!menu && photoQty>0;
+  const hasBaseWithStrat = hasProjBase && stratSel;
+  document.getElementById('bonus1').classList.toggle('unlocked',hasProjBase);
+  document.getElementById('bonus2').classList.toggle('unlocked',hasBaseWithStrat);
+  document.getElementById('bonus3').classList.toggle('unlocked',hasProjBase && discApplied);
+  if(hasProjBase && discApplied){
+    const totalSaved = photoDiscount + monthlyGross*DISC_RATE*mDuration;
+    document.getElementById('bonus3orig').textContent=totalSaved>0?'R$ '+fmt(totalSaved)+' economizados':'—';
+  } else {
+    document.getElementById('bonus3orig').textContent='—';
+  }
+
+  // Grand total bonus (tier 1 ou 2)
+  const gtBonus=document.getElementById('gtBonus');
+  let bonusText='', bonusVal=0;
+  if(hasBaseWithStrat){ bonusText='1 carrossel + 1 post'; bonusVal=210; }
+  else if(hasProjBase){ bonusText='1 carrossel'; bonusVal=150; }
+  if(bonusText){
+    gtBonus.style.display='flex';
+    document.getElementById('gtBonusText').textContent='🎁 Bônus: '+bonusText;
+    document.getElementById('gtBonusVal').textContent='R$ '+fmt(bonusVal)+' grátis';
+  } else { gtBonus.style.display='none'; }
+
+  // Linhas do total geral
+  document.getElementById('gtFoto').textContent=R(photoGross);
+  const gtFDisc=document.getElementById('gtFotoDiscRow');
+  if(discApplied && photoGross>0){ gtFDisc.style.display='flex'; document.getElementById('gtFotoDisc').textContent='− R$ '+fmt(photoDiscount); }
+  else { gtFDisc.style.display='none'; }
+
+  document.getElementById('gtVideo').textContent=R(videoGross);
+  document.getElementById('gtBrand').textContent=R(brandVal);
+  document.getElementById('gtStrat').textContent=R(stratVal);
+  document.getElementById('gtMenu').textContent=R(menuVal);
+  // Destaques: mostra "Incluso" quando vem com identidade completa
+  if(hlIncluded){
+    document.getElementById('gtHL').innerHTML='<span style="color:#6FCF97;">Incluso na Identidade</span>';
+  } else {
+    document.getElementById('gtHL').textContent=R(hlVal);
+  }
+
+  // Label dinâmica da prestação mensal no total geral
+  const gtMonthlyLabel = document.getElementById('gtMonthlyLabel');
+  gtMonthlyLabel.textContent = hasMonthly
+    ? (mDuration===1 ? 'Prestação Mensal (×1)' : `Prestação Mensal (×${mDuration})`)
+    : 'Prestação Mensal';
+  document.getElementById('gtMonthly').textContent=hasMonthly?'R$ '+fmt(monthlyGross*mDuration):'—';
+  const gtMDisc=document.getElementById('gtMonthlyDiscRow');
+  if(discApplied&&hasMonthly){ gtMDisc.style.display='flex'; document.getElementById('gtMonthlyDisc').textContent='− R$ '+fmt(monthlyGross*DISC_RATE*mDuration); }
+  else { gtMDisc.style.display='none'; }
+
+  const grand = photoNet + videoGross + brandVal + stratVal + menuVal + hlVal + monthlyTotalPeriod;
+  if(grand>0){
+    document.getElementById('gtTotal').textContent='R$ '+fmt(grand);
+    const parts=[];
+    if(photoQty>0) parts.push(`${photoQty} produto${photoQty!==1?'s':''}`);
+    if(videoGross>0) parts.push('vídeos');
+    if(brand) parts.push(brand.name);
+    if(stratSel) parts.push('estratégia');
+    if(menu) parts.push(menu.name);
+    if(hlActive) parts.push('destaques');
+    if(hasMonthly) parts.push(`${mDuration} ${mDuration===1?'mês':'meses'}`);
+    document.getElementById('gtNote').textContent=parts.join(' · ');
+    document.getElementById('gtLabel').textContent = hasMonthly
+      ? (mDuration===1 ? 'Total Geral (inicial + 1 mês)' : `Total Geral (inicial + ${mDuration} meses)`)
+      : 'Total Projeto Base';
+  } else {
+    document.getElementById('gtTotal').textContent='R$ —';
+    document.getElementById('gtNote').textContent='Selecione os itens acima';
+    document.getElementById('gtLabel').textContent='Total Geral';
+  }
+
+  // SCHEDULE
+  const m0Breakdown=[];
+  if(photoGross>0) m0Breakdown.push({label:'Fotografia ('+photoQty+' produto'+(photoQty!==1?'s':'')+')', val:'R$ '+fmt(photoGross), raw:photoGross});
+  videoTypes.forEach(v=>{ if(vQtys[v.id]>0) m0Breakdown.push({label:vQtys[v.id]+'× '+v.name, val:'R$ '+fmt(vQtys[v.id]*v.price), raw:vQtys[v.id]*v.price}); });
+  if(brandVal>0) m0Breakdown.push({label:brand.name, val:'R$ '+fmt(brandVal), raw:brandVal});
+  if(stratVal>0) m0Breakdown.push({label:'Estratégia de Marca', val:'R$ '+fmt(stratVal), raw:stratVal});
+  if(menuVal>0) m0Breakdown.push({label:menu.name, val:'R$ '+fmt(menuVal), raw:menuVal});
+  if(hlVal>0) m0Breakdown.push({label:'Capas para Destaques', val:'R$ '+fmt(hlVal), raw:hlVal});
+  if(hlIncluded) m0Breakdown.push({label:'Capas para Destaques (incluso na Identidade Completa)', val:'Grátis', raw:0});
+
+  const mBreakdown=[];
+  monthlyDefs.forEach(i=>{ if(mQtys[i.id]>0) mBreakdown.push({label:mQtys[i.id]+'× '+i.name, val:'R$ '+fmt(mQtys[i.id]*i.unitPrice), raw:mQtys[i.id]*i.unitPrice}); });
+
+  const m0Total = photoGross+videoGross+brandVal+stratVal+menuVal+hlVal;
+  buildSchedule(m0Total, m0Breakdown, photoDiscount, monthlyNet, mBreakdown, hasMonthly, discApplied, bonusText, bonusVal, mDuration);
+}
+
+// init
+update();
+</script>
+</body>
+</html>
